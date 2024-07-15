@@ -1,0 +1,112 @@
+body{
+margin: 0;
+padding: 0;
+font-family: 'Times New Roman','Georgia';
+height: 100vh;
+position: relative;
+}
+header{
+    background-color: blue;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 15vh;
+    display:flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    justify-content: space-between;
+    align-content:center;
+}
+
+main{
+   display: flex;
+   justify-content: center;
+   align-content: center;
+   flex-direction: column;
+   margin-top: 15vh;
+   margin-bottom: 10vh;
+   height: 75vh;
+   position: fixed;
+   width: 100%;
+   overflow-y: auto; 
+}
+
+footer{
+   background-color: blue;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 10vh;
+}
+
+.container-form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    
+}
+nav{
+  background-color: blue;
+  color: white;
+  font-family:Arial, sans-serif;
+}
+
+nav ul{
+    list-style: none;
+    padding:0;
+    margin:0;
+    display:flex;
+}
+nav ul li{
+    position: relative;
+    
+}
+nav ul li a{
+    display:block;
+    padding:10px 20px;
+    color:white;
+    text-decoration: none;
+    
+}
+
+nav ul li:hover .submenu{
+    display:block;
+    
+}
+
+.submenu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left : 0;
+    background-color: blue;
+    z-index: 1;
+    
+}
+
+.submenu li {
+    display:block;
+   
+    
+}
+
+.submenu li a{
+    padding: 10px 20px;
+    
+}
+
+nav ul li a:active{
+    background-color: darkblue;
+}
+nav ul li a:hover{
+    background-color: darkblue;
+}
+
+.logo{
+    filter: brightness(1) invert(1);
+    padding-left:40px;
+}
