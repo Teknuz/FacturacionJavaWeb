@@ -100,7 +100,24 @@ private String monto;
     
     public List listarfacturas() {
     ArrayList<facturaventamodelo> lista = new ArrayList<>();
-    String sql="select * from ventas";
+    String sql=" SELECT \n" +
+"    v.idventas AS `ID Venta`,\n" +
+"    v.ven_fecha AS `Fecha venta`,\n" +
+"      v.ven_condicion AS `Condicion venta`,\n" +
+"    v.ven_estado AS `Estado venta`,\n" +
+"    u.usu_nombre AS `Nombre Usuario`,\n" +
+"    a.idaperturas AS `ID Apertura`,\n" +
+"    CONCAT(cli.cli_nombre, ' ', cli.cli_apellido) AS `Nombre Cliente`\n" +
+"FROM \n" +
+"    ventas v\n" +
+"JOIN \n" +
+"    clientes cli ON v.clientes_idclientes = cli.idclientes\n" +
+"JOIN \n" +
+"    aperturas a ON v.aperturas_idaperturas = a.idaperturas\n" +
+"JOIN \n" +
+"    usuarios u ON v.usuarios_idusuarios = u.idusuarios\n" +
+"ORDER BY \n" +
+"    v.idventas;";
     
         try {
             st = utilidades.conexion.sta(st);
@@ -112,8 +129,9 @@ private String monto;
             modelo.setCondicion(rs.getString(3));
             modelo.setEstado(rs.getString(4));
             modelo.setIdusuarios(rs.getString(5));
-            modelo.setIdapertura(rs.getString(7));
-            modelo.setCliente(rs.getString(6));
+            modelo.setCliente(rs.getString(7));
+            modelo.setIdapertura(rs.getString(6));
+            
             lista.add(modelo);
             }
             st.close();

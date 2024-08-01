@@ -91,7 +91,20 @@ public class facturacompramodelo {
     
     public List listarfacturas() {
     ArrayList<facturacompramodelo> lista = new ArrayList<>();
-    String sql="select * from compras";
+    String sql="SELECT \n" +
+"    c.idcompras,\n" +
+"    c.com_fecha,\n" +
+"    c.com_condicion,\n" +
+"    c.com_estado,\n" +
+"    u.usu_nombre AS nombre_usuario,\n" +
+"    p.prov_nombre AS nombre_proveedor,\n" +
+"    c.aperturas_idaperturas\n" +
+"FROM \n" +
+"    compras c\n" +
+"JOIN \n" +
+"    usuarios u ON c.usuarios_idusuarios = u.idusuarios\n" +
+"JOIN \n" +
+"    proveedores p ON c.proveedores_idproveedores = p.idproveedores;";
     
         try {
             st = utilidades.conexion.sta(st);

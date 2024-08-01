@@ -15,9 +15,20 @@ public class productosmodelo {
 
     private String codigo, nombre, apellido, ci, mensaje, telefono, ciudad,costo,precio,stock,stockmin,proveedornombre,proveedorid;
     private String minimo,iva;
+    private String categoria;
     Statement st;
     ResultSet rs;
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    
+    
     public String getMinimo() {
         return minimo;
     }
@@ -174,6 +185,7 @@ public class productosmodelo {
                 modelo.setStockmin(rs.getString("pro_min"));
                  modelo.setProveedorid(rs.getString("proveedores_idproveedores"));
                  modelo.setIva(rs.getString("pro_iva"));
+                 modelo.setCategoria(rs.getString("pro_categoria"));
                
 
                 // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp

@@ -92,7 +92,18 @@ private String idcobro, fecha,estado,idcliente,aperturaid,apellido,idproveedor,i
 
     public List listarcobros() {
     ArrayList<pagomodelover> lista = new ArrayList<>();
-    String sql="select * from pagos;";
+    String sql="  SELECT \n" +
+"    p.idpagos AS `Id Pagos`,\n" +
+"    p.pag_fecha AS `Fecha Pago`,\n" +
+"    p.pag_estado AS `Estado Pago`,\n" +
+"    pro.prov_nombre AS `Proveedor`,\n" +
+"    a.idaperturas AS `Id Apertura`\n" +
+"FROM \n" +
+"    pagos p\n" +
+"    JOIN proveedores pro ON p.prov_idproveedores = pro.idproveedores\n" +
+"    JOIN aperturas a ON p.aper_idaperturas = a.idaperturas\n" +
+"ORDER BY \n" +
+"    p.idpagos;;";
     
         try {
             st = utilidades.conexion.sta(st);
