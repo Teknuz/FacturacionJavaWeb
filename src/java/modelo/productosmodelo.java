@@ -201,7 +201,94 @@ public class productosmodelo {
 
         return list; // Se devuelve la lista de objetos 'clientemodelo'. Que luego recibira la página clientes.jsp
     }
+      public List listarporcategoria1() { // Método público que devuelve una lista de clientes.
+        /*
+            Se crea una nueva lista utilizando la implementación ArrayList 
+            que contendrá objetos de tipo 'clientemodelo'(codigo, nombre, apellido, ci/ruc).    
+         */
+        ArrayList<productosmodelo> list = new ArrayList<>();
+        // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
+        String sql = "select * from productos where pro_categoria = 'Insumo'";
 
+        try {
+            //se abre y se prepara la conexion
+            st = utilidades.conexion.sta(st);
+            // Se ejecuta la consulta SQL y se obtiene un conjunto de resultados segun el sql
+            rs = st.executeQuery(sql);
+            // Se itera sobre cada fila del conjunto de resultados hasta que no haya resultados
+            while (rs.next()) {
+                //se realiza la instancia de la misma clase para contener los datos extraidos de la consulta
+                productosmodelo modelo = new productosmodelo();
+                //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
+                modelo.setCodigo(rs.getString("idproductos"));
+                modelo.setNombre(rs.getString("pro_nombre"));
+                modelo.setCosto(rs.getString("pro_costo"));
+                modelo.setPrecio(rs.getString("pro_precio"));
+                modelo.setStock(rs.getString("pro_stock"));
+                modelo.setStockmin(rs.getString("pro_min"));
+                 modelo.setProveedorid(rs.getString("proveedores_idproveedores"));
+                 modelo.setIva(rs.getString("pro_iva"));
+                 modelo.setCategoria(rs.getString("pro_categoria"));
+               
+
+                // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp
+                list.add(modelo);
+            }
+
+            st.close(); // Se cierra el Statement para liberar recursos.
+            rs.close(); // Se cierra el conjunto de resultados para liberar recursos.
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clientemodelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list; // Se devuelve la lista de objetos 'clientemodelo'. Que luego recibira la página clientes.jsp
+    }
+
+      
+       public List listarporcategoria2() { // Método público que devuelve una lista de clientes.
+        /*
+            Se crea una nueva lista utilizando la implementación ArrayList 
+            que contendrá objetos de tipo 'clientemodelo'(codigo, nombre, apellido, ci/ruc).    
+         */
+        ArrayList<productosmodelo> list = new ArrayList<>();
+        // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
+        String sql = "select * from productos where pro_categoria = 'Servicio'";
+
+        try {
+            //se abre y se prepara la conexion
+            st = utilidades.conexion.sta(st);
+            // Se ejecuta la consulta SQL y se obtiene un conjunto de resultados segun el sql
+            rs = st.executeQuery(sql);
+            // Se itera sobre cada fila del conjunto de resultados hasta que no haya resultados
+            while (rs.next()) {
+                //se realiza la instancia de la misma clase para contener los datos extraidos de la consulta
+                productosmodelo modelo = new productosmodelo();
+                //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
+                modelo.setCodigo(rs.getString("idproductos"));
+                modelo.setNombre(rs.getString("pro_nombre"));
+                modelo.setCosto(rs.getString("pro_costo"));
+                modelo.setPrecio(rs.getString("pro_precio"));
+                modelo.setStock(rs.getString("pro_stock"));
+                modelo.setStockmin(rs.getString("pro_min"));
+                 modelo.setProveedorid(rs.getString("proveedores_idproveedores"));
+                 modelo.setIva(rs.getString("pro_iva"));
+                 modelo.setCategoria(rs.getString("pro_categoria"));
+               
+
+                // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp
+                list.add(modelo);
+            }
+
+            st.close(); // Se cierra el Statement para liberar recursos.
+            rs.close(); // Se cierra el conjunto de resultados para liberar recursos.
+
+        } catch (SQLException ex) {
+            Logger.getLogger(clientemodelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list; // Se devuelve la lista de objetos 'clientemodelo'. Que luego recibira la página clientes.jsp
+    }
     //metodo para guardar
     public void guardar() throws SQLException {
         //se crea el sql para guardar

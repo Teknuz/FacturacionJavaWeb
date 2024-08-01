@@ -301,13 +301,14 @@ button:hover {
                                 <th>PRECIO</th>
                                 <th>MINIMO</th>
                                 <th>IVA</th>
+                                <th>CATEGORIA</th>
                                 <th>ACCION</th>
                             </tr>
                         </thead>
                         <tbody>
                             <%
                                 productosmodelo modelop = new productosmodelo();
-                                List<productosmodelo> listp = modelop.listar();
+                                List<productosmodelo> listp = modelop.listarporcategoria2();
                                 Iterator<productosmodelo> iterp = listp.iterator();
                                 productosmodelo mp = null;
                                 while (iterp.hasNext()) {
@@ -321,6 +322,7 @@ button:hover {
                                 <td><span class="dato-input"><%= mp.getPrecio()%></span></td>
                                 <td><span class="dato-input"><%= mp.getStockmin()%></span></td>
                                 <td><span class="dato-input"><%= mp.getIva()%></span></td>
+                                <td><span class="dato-input"><%= mp.getCategoria()%></span></td>
                                 <td><button type="button" class="btn btn-success mb-2"  onclick="moverFila(this)">SELECCIONAR</button></td>
                             </tr>
                             <% }%>
