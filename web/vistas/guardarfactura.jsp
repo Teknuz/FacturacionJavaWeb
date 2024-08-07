@@ -165,11 +165,15 @@ button:hover {
             <div class="container3">
                 <div class="window">
                     <table border="0">
-                        <tbody>
-                            <tr>
-                                <td>N° FACTURA</td>
-                                <td><input type="text" name="txtnumero"></td>
-                            </tr>
+                                                                           <%
+    facturaventamodelo facturaModelo = new facturaventamodelo();
+    String ultimoNumeroFactura = facturaModelo.obtenerUltimoNumeroFactura();
+    int nuevoNumeroFactura = Integer.parseInt(ultimoNumeroFactura) + 1;
+%>
+                    <tr>
+                        <td>N° FACTURA</td>
+                        <td><input type="text" class="form-control" name="txtnumero" value="<%= nuevoNumeroFactura %>" readonly></td>
+                    </tr>
                             <tr>
                                 <td>CONDICIÓN</td>
                                 <td>

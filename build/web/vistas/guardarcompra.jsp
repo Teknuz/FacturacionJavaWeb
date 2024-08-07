@@ -1,3 +1,4 @@
+<%@page import="modelo.facturacompramodelo"%>
 <%@page import="modelo.proveedoresmodelo"%>
 <%@page import="modelo.productosmodelo"%>
 <%@page import="java.util.Iterator"%>
@@ -169,10 +170,15 @@ button:hover {
                 <div class="window">
                     <table border="0">
                         <tbody>
-                            <tr>
-                                <td>N° FACTURA</td>
-                                <td><input type="text" name="txtnumero"></td>
-                            </tr>
+                                                      <%
+    facturacompramodelo facturaModelo = new facturacompramodelo();
+    String ultimoNumeroFactura = facturaModelo.obtenerUltimoNumeroFactura();
+    int nuevoNumeroFactura = Integer.parseInt(ultimoNumeroFactura) + 1;
+%>
+                    <tr>
+                        <td>N° FACTURA</td>
+                        <td><input type="text" class="form-control" name="txtnumero" value="<%= nuevoNumeroFactura %>" readonly></td>
+                    </tr>
                             <tr>
                                 <td>CONDICIÓN</td>
                                 <td>
@@ -196,6 +202,7 @@ button:hover {
                 <div class="window">
                     <table border="0">
                         <tbody>
+  
                             <tr>
                                 <td>CODIGO</td>
                                 <td><input type="text" name="txtcodigoprov" id="txtcodigoprov" readonly></td>

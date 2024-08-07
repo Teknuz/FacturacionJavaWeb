@@ -56,6 +56,10 @@ public class facturacompracontrolador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+          facturacompramodelo f = new facturacompramodelo();
+       
+       
     }
 
     /**

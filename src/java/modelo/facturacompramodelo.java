@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.modeloabrircaja;
+import utilidades.conexion;
 
 /**
  *
@@ -28,6 +31,27 @@ public class facturacompramodelo {
     private String idusuarios;
     private String idapertura;
     private String Proveedor;
+    private String idventas;
+    private String uv;
+
+    public String getUv() {
+        return uv;
+    }
+
+    public void setUv(String uv) {
+        this.uv = uv;
+    }
+    
+
+    public String getIdventas() {
+        return idventas;
+    }
+
+    public void setIdventas(String idventas) {
+        this.idventas = idventas;
+    }
+    
+    
 
     public String getProveedor() {
         return Proveedor;
@@ -169,5 +193,24 @@ public class facturacompramodelo {
         return aux;
     }
     
+  public String obtenerUltimoNumeroFactura() {
+    String sql = "SELECT MAX(idcompras) as ultimoNumero FROM compras";
+    String ultimoNumero = "0";
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoNumero = rs.getString("ultimoNumero");
+            if (ultimoNumero == null) {
+                ultimoNumero = "0";
+            }
+        }
+        st.close();
+        rs.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(facturacompramodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ultimoNumero;
+}
 }
 

@@ -1,3 +1,4 @@
+<%@page import="modelo.cobromodelo"%>
 <%@page import="modelo.facturaventamodelo"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.clientemodelo"%>
@@ -150,11 +151,15 @@ button:hover {
             <div class="window">
                 <!-- Tabla para ingresar datos de cobro -->
                 <table border="0">
-                    <tbody>
-                        <tr>
-                            <td>N° COBRO</td>
-                            <td><input type="text" name="txtcodigo"></td>
-                        </tr>
+                    <tbody>                                                   <%
+    cobromodelo facturaModelo = new cobromodelo();
+    String ultimoNumeroFactura = facturaModelo.obtenerUltimoNumeroFactura();
+    int nuevoNumeroFactura = Integer.parseInt(ultimoNumeroFactura) + 1;
+%>
+                    <tr>
+                        <td>N° FACTURA</td>
+                        <td><input type="text" class="form-control" name="txtnumero" value="<%= nuevoNumeroFactura %>" readonly></td>
+                    </tr>
                         <tr>
                             <td>FECHA</td>
                             <td><input type="text" id="txtfecha" name="txtfecha" readonly></td>

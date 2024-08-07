@@ -160,10 +160,10 @@
                     if(validarcaja != null && validarcaja.equals("noabrir")) { %>
                     <h1>CAJA ABIERTA, DEBE CERRAR</h1>
                     <button onclick="cerrarModal()">Aceptar</button>
-                   <% } else if (validarcaja != null && validarcaja.equals("ABIERTA")) {%>
+                   <% } else if (validarcaja != null && validarcaja.equals("abierta")) {%>
                     <h1>CAJA ABIERTA CORRECTAMENTE</h1>
                     <button onclick="cerrarModal()">Aceptar</button>
-                    <% } else if (validarcaja != null && validarcaja.equals("CERRADAS")) {%>
+                    <% } else if (validarcaja != null && validarcaja.equals("cerrada")) {%>
                     <h1>CAJA CERRADA</h1>
                     <button onclick="cerrarModal()">Aceptar</button>
                     <%}%>
