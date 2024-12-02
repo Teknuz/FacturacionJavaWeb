@@ -13,7 +13,7 @@
    /* String listado=request.getParameter("l");
     int desde=Integer.parseInt(request.getParameter("d"));
     int hasta=Integer.parseInt(request.getParameter("h"));*/
-    String jasperReport="clientes.jasper";
+    String jasperReport="clientes2.jasper";
     JasperPrint print=null;
     Connection conn=null;
     

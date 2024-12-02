@@ -253,7 +253,7 @@ public class productosmodelo {
          */
         ArrayList<productosmodelo> list = new ArrayList<>();
         // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
-        String sql = "select * from productos where pro_categoria = 'Servicio'";
+        String sql = "select * from productos";
 
         try {
             //se abre y se prepara la conexion

@@ -78,6 +78,7 @@ public class clientecontrolador extends HttpServlet {
             modelo.setCi(request.getParameter("txtci"));
              modelo.setTelefono(request.getParameter("txttelefono"));
               modelo.setCiudad(request.getParameter("txtciudad"));
+               
             try {
                 modelo.guardar();
             } catch (SQLException ex) {
@@ -95,6 +96,7 @@ public class clientecontrolador extends HttpServlet {
             modelo.setCi(request.getParameter("txtci"));
               modelo.setTelefono(request.getParameter("txttelefono"));
                 modelo.setCiudad(request.getParameter("txtciudad"));
+              
             modelo.modificar();
             //SE ESPECIFICA QUE PAGINA DEBE MOSTRAR EN LA VARIABLE ACCESO
             acceso = "clientes.jsp";

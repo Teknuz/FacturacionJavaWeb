@@ -4,6 +4,7 @@
     Author     : User
 --%>
 
+<%@page import="modelo.personalmodelo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,16 +31,21 @@
             .btn {
                 margin-right: 5px;
             }
+            
         </style>
 </head>
 <body>
+                   <% personalmodelo facturaModelo = new personalmodelo();
+    String ultimoNumeroFacturaPago = facturaModelo.obtenerUltimoNumeroFacturaPago();
+    int nuevoNumeroFactura = Integer.parseInt(ultimoNumeroFacturaPago) + 1;
+    %>
     <div class="container">
         <h1 class="mt-5">AGREGAR UN NUEVO PERSONAL</h1>
         
         <form action="../personalcontrolador" method="post">
             <div class="form-group">
                 <label for="txtcodigo">CÓDIGO</label>
-                <input type="text" class="form-control" id="txtcodigo" name="txtcodigo">
+                <input type="text" class="form-control" value="<%= nuevoNumeroFactura%>" id="txtcodigo" readonly name="txtcodigo">
             </div>
             <div class="form-group">
                 <label for="txtnombre">NOMBRE</label>
@@ -62,6 +68,7 @@
             <button type="button" class="btn btn-secondary" onclick="window.history.back();" name="cancelar">Cancelar</button>
         </form>
     </div>
+      
     <!-- Bootstrap JS (opcional) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

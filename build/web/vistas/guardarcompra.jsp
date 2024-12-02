@@ -387,10 +387,7 @@ button:hover {
                 document.getElementById("miModal").style.display = "block";
             }
 
-            function cerrarModal() {
-                event.preventDefault();
-                document.getElementById("miModal").style.display = "none";
-            }
+           
             function mostrarModalp() {
                 event.preventDefault();
                 document.getElementById("miModalp").style.display = "block";
@@ -399,6 +396,10 @@ button:hover {
             function cerrarModalp() {
                 event.preventDefault();
                 document.getElementById("miModalp").style.display = "none";
+            }
+            function cerrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "none";
             }
             function obtenerFilaProv(boton) {
                 event.preventDefault(); // Evitar la acción predeterminada del botón

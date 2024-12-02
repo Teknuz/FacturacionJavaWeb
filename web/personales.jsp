@@ -126,9 +126,9 @@
         <!-- Enlace para agregar nuevo personal -->
         <a class="btn btn-primary " href="vistas/guardar_personal.jsp">GUARDAR PERSONAL</a> <br>
         
-        <!-- Formulario para imprimir -->
+        <!-- Formulario para imprimir --> <br>
         <form action="personalcontrolador" method="post">
-            <button type="submit" class="btn btn-success mb-3" name="accion" value="informe">IMPRIMIR</button>
+            <button type="submit" value="informe" name="accion" class="btn btn-success mb-3"  >IMPRIMIR</button>
         </form>
         
         <!-- Tabla para visualizar todos los personales de la base de datos -->

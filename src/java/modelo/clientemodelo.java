@@ -18,6 +18,20 @@ public class clientemodelo {
     private String codigo, nombre, apellido, ci, mensaje, telefono, ciudad;
     Statement st;
     ResultSet rs;
+    
+    private String ciudadnombre;
+
+    public String getCiudadnombre() {
+        return ciudadnombre;
+    }
+
+    public void setCiudadnombre(String ciudadnombre) {
+        this.ciudadnombre = ciudadnombre;
+    }
+
+
+    
+    
 
     public String getTelefono() {
         return telefono;
@@ -155,7 +169,11 @@ String sql = "INSERT INTO clientes (idclientes, cli_nombre, cli_apellido, cli_ru
          */
         ArrayList<clientemodelo> list = new ArrayList<>();
         // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
-        String sql = "select * from clientes where idclientes ='" + id + "'";
+        String sql="SELECT clientes.idclientes, clientes.cli_nombre, clientes.cli_apellido, clientes.cli_ruc, clientes.cli_telefono,ciudades_idciudades, ciudades.ciu_nombre\n" +
+"FROM clientes\n" +
+"INNER JOIN ciudades ON clientes.ciudades_idciudades = ciudades.idciudades  where idclientes = " + id +"";
+        
+        
 
         try {
             //se abre y se prepara la conexion
@@ -167,12 +185,13 @@ String sql = "INSERT INTO clientes (idclientes, cli_nombre, cli_apellido, cli_ru
                 //se realiza la instancia de la misma clase para contener los datos extraidos de la consulta
                 clientemodelo modelo = new clientemodelo();
                 //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
-                modelo.setCodigo(rs.getString("idclientes"));
+                modelo.setCodigo(rs.getString("clientes.idclientes"));
                 modelo.setNombre(rs.getString("cli_nombre"));
                 modelo.setApellido(rs.getString("cli_apellido"));
                 modelo.setCi(rs.getString("cli_ruc"));
-                 modelo.setTelefono(rs.getString("cli_telefono"));
-                  modelo.setCiudad(rs.getString("ciudades_idciudades"));
+                modelo.setTelefono(rs.getString("cli_telefono"));
+                modelo.setCiudad(rs.getString("ciudades_idciudades"));
+                modelo.setCiudadnombre(rs.getString("ciu_nombre"));
                   
                 // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp
                 list.add(modelo);
@@ -213,5 +232,25 @@ String sql = "INSERT INTO clientes (idclientes, cli_nombre, cli_apellido, cli_ru
         }
 
     }
+    
+          public String obtenerUltimoNumeroFacturaPago() {
+    String sql = "SELECT MAX(idclientes) as ultimoNumero FROM clientes";
+    String ultimoNumero = "0";
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoNumero = rs.getString("ultimoNumero");
+            if (ultimoNumero == null) {
+                ultimoNumero = "0";
+            }
+        }
+        st.close();
+        rs.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(clientemodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ultimoNumero;
+}
 
 }

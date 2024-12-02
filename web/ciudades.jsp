@@ -123,7 +123,8 @@
     <main class="container">
         <h1 class="text-light">FORMULARIO CIUDADES</h1>
         <a href="vistas/guardar_ciudad.jsp" class="btn btn-primary">GUARDAR CIUDAD</a>
-        <form action="ciudadcontrolador" method="post">
+        
+        <form action="ciudadcontrolador" method="post"><br>
             <button type="submit" name="accion" value="informe" class="btn btn-success mb-2">IMPRIMIR</button>
         </form>
         <table class="table table-dark">

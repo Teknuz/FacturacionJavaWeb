@@ -118,9 +118,11 @@
             <!-- Sección de botones -->
             <div class="mb-3">
                 <a href="vistas/guardar_cliente.jsp" class="btn btn-primary mb-3">GUARDAR CLIENTE</a>
-                
-                    <button type="submit" name="accion" value="informe" class="btn btn-success mb-3">IMPRIMIR</button>
-                
+        
+                <form action="clientecontrolador" method="post">
+            <button type="submit" value="informe" name="accion" class="btn btn-success mb-3">IMPRIMIR</button>
+        </form>
+    
             </div>
             <!-- Tabla de clientes -->
             <table class="table table-bordered">

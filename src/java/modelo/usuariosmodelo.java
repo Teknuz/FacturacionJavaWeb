@@ -17,6 +17,16 @@ public class usuariosmodelo {
     private String Codigo, Usuario, Clave, Tipo, Estado, Personal, mensaje;
     Statement st;
     ResultSet rs;
+    private String Personalnombre;
+
+    public String getPersonalnombre() {
+        return Personalnombre;
+    }
+
+    public void setPersonalnombre(String Personalnombre) {
+        this.Personalnombre = Personalnombre;
+    }
+    
 
     public String getUsuario() {
         return Usuario;
@@ -87,10 +97,18 @@ public class usuariosmodelo {
          */
         ArrayList<usuariosmodelo> list = new ArrayList<>();
         // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
-        String sql = "SELECT u.idusuarios, u.usu_nombre, u.usu_clave, u.usu_tipo, u.usu_estado,\n"
-                + "       p.idpersonales\n"
-                + "FROM usuarios u\n"
-                + "INNER JOIN personales p ON u.personales_idpersonales = p.idpersonales;";
+        String sql ="SELECT \n" +
+"    u.idusuarios AS `idusuarios`,\n" +
+"    u.usu_nombre AS `usunombre`,\n" +
+"    u.usu_clave AS `usuclave`,\n" +
+"    u.usu_tipo AS `usutipo`,\n" +
+"    u.usu_estado AS `usu_estado`,\n" +
+"    p.idpersonales AS `idpersonal`,\n" +
+"    CONCAT(p.per_nombre, ' ', p.per_apellido) AS `nombrecompleto`\n" +
+"FROM \n" +
+"    usuarios u\n" +
+"LEFT JOIN \n" +
+"    personales p ON u.personales_idpersonales = p.idpersonales";
 
         try {
             //se abre y se prepara la conexion
@@ -103,11 +121,12 @@ public class usuariosmodelo {
                 usuariosmodelo modelo = new usuariosmodelo();
                 //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
                 modelo.setCodigo(rs.getString("idusuarios"));
-                modelo.setUsuario(rs.getString("usu_nombre"));
-                modelo.setClave(rs.getString("usu_clave"));
-                modelo.setTipo(rs.getString("usu_tipo"));
+                modelo.setUsuario(rs.getString("usunombre"));
+                modelo.setClave(rs.getString("usuclave"));
+                modelo.setTipo(rs.getString("usutipo"));
                 modelo.setEstado(rs.getString("usu_estado"));
-                modelo.setPersonal(rs.getString("p.idpersonales"));
+                modelo.setPersonal(rs.getString("idpersonal"));
+                modelo.setPersonalnombre(rs.getString("nombrecompleto"));
 
                 // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp
                 list.add(modelo);
@@ -214,5 +233,23 @@ public class usuariosmodelo {
         }
 
     }
-
+   public String obtenerUltimoNumeroFacturaPago() {
+    String sql = "SELECT MAX(idusuarios) as ultimoNumero FROM usuarios";
+    String ultimoNumero = "0";
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoNumero = rs.getString("ultimoNumero");
+            if (ultimoNumero == null) {
+                ultimoNumero = "0";
+            }
+        }
+        st.close();
+        rs.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(usuariosmodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ultimoNumero;
+}
 }

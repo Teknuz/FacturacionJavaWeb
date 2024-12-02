@@ -16,6 +16,17 @@ public class personalmodelo {
     private String codigo, nombre, apellido, ci, mensaje, telefono, ciudad;
     Statement st;
     ResultSet rs;
+    private String nombrecompleto;
+
+    public String getNombrecompleto() {
+        return nombrecompleto;
+    }
+
+    public void setNombrecompleto(String nombrecompleto) {
+        this.nombrecompleto = nombrecompleto;
+    }
+    
+    
 
     public String getTelefono() {
         return telefono;
@@ -118,7 +129,49 @@ public class personalmodelo {
 
         return list; // Se devuelve la lista de objetos 'clientemodelo'. Que luego recibira la página clientes.jsp
     }
+ public List listar2() { // Método público que devuelve una lista de clientes.
+        /*
+            Se crea una nueva lista utilizando la implementación ArrayList 
+            que contendrá objetos de tipo 'clientemodelo'(codigo, nombre, apellido, ci/ruc).    
+         */
+        ArrayList<personalmodelo> list2 = new ArrayList<>();
+        // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
+        String sql = "select \n" +
+"idpersonales AS  `ID`,\n" +
+"CONCAT(per_nombre, ' ',per_apellido) AS `NOMBRECOMPLETO`,\n" +
+"per_ci AS `CI`,\n" +
+"per_telefono `TELEFONO`\n" +
+" from personales;";
 
+        try {
+            //se abre y se prepara la conexion
+            st = utilidades.conexion.sta(st);
+            // Se ejecuta la consulta SQL y se obtiene un conjunto de resultados segun el sql
+            rs = st.executeQuery(sql);
+            // Se itera sobre cada fila del conjunto de resultados hasta que no haya resultados
+            while (rs.next()) {
+                //se realiza la instancia de la misma clase para contener los datos extraidos de la consulta
+                personalmodelo modelo = new personalmodelo();
+                //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
+                modelo.setCodigo(rs.getString("ID"));
+                modelo.setNombrecompleto(rs.getString("NOMBRECOMPLETO"));
+                modelo.setCi(rs.getString("CI"));
+                modelo.setTelefono(rs.getString("TELEFONO"));
+                
+
+                // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp
+                list2.add(modelo);
+            }
+
+            st.close(); // Se cierra el Statement para liberar recursos.
+            rs.close(); // Se cierra el conjunto de resultados para liberar recursos.
+
+        } catch (SQLException ex) {
+            Logger.getLogger(personalmodelo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list2; // Se devuelve la lista de objetos 'clientemodelo'. Que luego recibira la página clientes.jsp
+    }
     //metodo para guardar
     public void guardar() throws SQLException {
         //se crea el sql para guardar
@@ -209,5 +262,25 @@ String sql = "INSERT INTO personales (idpersonales, per_nombre, per_apellido, pe
         }
 
     }
+    
+       public String obtenerUltimoNumeroFacturaPago() {
+    String sql = "SELECT MAX(idpersonales) as ultimoNumero FROM personales";
+    String ultimoNumero = "0";
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoNumero = rs.getString("ultimoNumero");
+            if (ultimoNumero == null) {
+                ultimoNumero = "0";
+            }
+        }
+        st.close();
+        rs.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(personalmodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ultimoNumero;
+}
 
 }

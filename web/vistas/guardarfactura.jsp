@@ -281,7 +281,7 @@ button:hover {
                                     <input type="text" name="txtprecio" id="txtprecio" hidden>
                                 </td>
                                 <td><button type="button" class="btn btn-success mb-2"  onclick="mostrarModalp()">BUSCAR</button></td>
-                                <td><label id="txtnombrepro">AQUI DEBE APARECER EL NOMBRE DEL PRODUCTO</label></td>
+                                <td><label id="txtnombrepro">AQUI DEBE APARECER EL NOMBRE DEL PRODUCTO/SERVICIO</label></td>
                                 <td>CANTIDAD</td>
                                 <td><input type="number" name="txtcantidad" id="txtcantidad"></td>
                                 <td><button type="button" class="btn btn-success mb-2"   onclick="cargarproducto()">AGREGAR</button></td>
@@ -293,7 +293,7 @@ button:hover {
             <!-- modal para producto -->
             <div id="miModalp" class="modal">
                 <div class="modal-contenido2">
-                    <label>BUSCADOR DE PRODUCTOS</label>
+                    <label>BUSCADOR DE PRODUCTOS/SERVICIOS</label>
                     <span class="cerrar" onclick="cerrarModalp()">&times;</span>
                     <table border="1">
                         <thead>

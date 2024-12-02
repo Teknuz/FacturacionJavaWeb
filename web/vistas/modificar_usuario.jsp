@@ -4,6 +4,7 @@
     Author     :user
 --%>
 
+<%@page import="modelo.personalmodelo"%>
 <%@page import="modelo.usuariosmodelo"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
@@ -17,7 +18,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JSP Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
+      <style>
         body {
             background-color: #343a40;
             color: #fff;
@@ -43,7 +44,100 @@
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
+            
         }
+                body {
+                background-color: #343a40;
+                color: #fff;
+            }
+            .container {
+                margin-top: 50px;
+            }
+          
+            .btn {
+                margin-right: 5px;
+            }
+            
+           
+
+            th {
+                color: #7e7e7e;
+                
+            }
+            td {
+               color: #7e7e7e;
+               
+               
+            }
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    color: #fff;
+}
+
+  
+
+button {
+    margin: 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contenido {
+    background-color: #343a40;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: auto;
+    
+    height: auto;
+    overflow: auto;
+    text-align: center;
+}
+
+
+
+.cerrar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar:hover, .cerrar:focus {
+    color: #fff;
+}
+        
     </style>
 </head>
 <body>
@@ -60,6 +154,7 @@
                 m = iter.next();
             }
         %>
+          
         <form action="../usuarioscontrolador" method="post">
             <input type="hidden" name="txtcodigo" value="<%= m.getCodigo()%>">
 
@@ -71,19 +166,42 @@
                 <label for="txtclave">CLAVE</label>
                 <input type="text" class="form-control" id="txtclave" name="txtclave" value="<%= m.getClave()%>">
             </div>
-            <div class="form-group">
-                <label for="txttipo">TIPO</label>
-                <input type="text" class="form-control" id="txttipo" name="txttipo" value="<%= m.getTipo()%>">
+             <div class="form-group">
+                <label for="lang">TIPO</label> <BR><BR>
+                <select name="tipo" id="tipo">">
+                    <option selected="<%=m.getTipo()%>"></option>
+        <option value="ADMNISTRADOR">ADMINISTRADOR</option>
+        <option value="INVITADO">INVITADO</option>
+        </select>
             </div>
-            <div class="form-group">
-                <label for="txtestado">ESTADO</label>
-                <input type="text" class="form-control" id="txtestado" name="txtestado" value="<%= m.getEstado()%>">
+            <BR><div class="form-group">
+                
+                
+                   <label for="lang">ESTADO</label> <BR><BR>
+                   <select name="estado" form="form-control" id="estado">
+        <option value="ACTIVO">ACTIVO</option>
+        <option value="INACTIVO">INACTIVO</option>
+        </select>
             </div>
-            <div class="form-group">
-                <label for="txtpersonal">PERSONAL</label>
-                <input type="text" class="form-control" id="txtpersonal" name="txtpersonal" value="<%= m.getPersonal()%>">
-            </div>
-
+          
+<div class="form-group"><BR>
+     <%
+            String id2 = request.getParameter("id");
+            personalmodelo modelo2 = new personalmodelo();
+            List<personalmodelo> list2 = modelo2.listarporid(id2);
+            Iterator<personalmodelo> iter2 = list2.iterator();
+            personalmodelo m3 = null;
+            iter.hasNext();
+            while (iter2.hasNext()) {
+                m3 = iter2.next();
+            }
+        %>
+                <label for="txtusu">ID</label> <button class="btn btn-success mb-2" type="button" name="btnbuscarciu" onclick="mostrarModal()">
+                                        BUSCAR</button>
+                <input type="text" class="form-control" value="<%= m.getPersonal()%>" id="txtusu" name="txtusu">
+               <label for="txtusunombre">Nombre Usuario</label>
+               <input type="text" value="<%= m3.getNombre()%>" class="form-control" id="txtusunombre" name="txtusunombre">
+            </div><BR>
             <br>
             <input type="submit" class="btn btn-primary" name="accion" value="Editar">
               <button type="button" class="btn btn-secondary" onclick="window.history.back();" name="cancelar">Cancelar</button>

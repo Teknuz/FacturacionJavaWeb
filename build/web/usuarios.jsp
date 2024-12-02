@@ -130,7 +130,8 @@
                             <th scope="col">CLAVE</th>
                             <th scope="col">TIPO</th>
                             <th scope="col">ESTADO</th>
-                            <th scope="col">PERSONAL</th>
+                            <th scope="col">ID PERSONAL</th>
+                            <th scope="col">NOMBRE</th>
                             <th scope="col">ACCIONES</th><!-- Columna para acciones -->
                         </tr>
                     </thead>
@@ -151,6 +152,7 @@
                             <td><%= m.getTipo()%></td>
                             <td><%= m.getEstado()%></td>
                             <td><%= m.getPersonal()%></td>
+                             <td><%= m.getPersonalnombre()%></td>
                             <td>
                                 <!-- Enlaces para editar y eliminar -->
                                 <a class="btn btn-warning btn-sm" href="vistas/modificar_usuario.jsp?id=<%= m.getCodigo()%>">EDITAR</a>
