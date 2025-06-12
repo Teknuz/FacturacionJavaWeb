@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : modificarcliente
     Created on : 17/03/2024, 09:16:25 PM
     Author     :user
@@ -142,6 +142,10 @@ button:hover {
 </head>
 <body>
     <div class="container">
+           
+   
+            
+           
         <h1>MODIFICAR USUARIOS</h1>
         <%
             String id = request.getParameter("id");
@@ -156,6 +160,16 @@ button:hover {
         %>
           
         <form action="../usuarioscontrolador" method="post">
+             <script> 
+                function mostrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "block";
+            }
+                function cerrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "none";
+            }
+              </script>
             <input type="hidden" name="txtcodigo" value="<%= m.getCodigo()%>">
 
             <div class="form-group">
@@ -178,7 +192,7 @@ button:hover {
                 
                 
                    <label for="lang">ESTADO</label> <BR><BR>
-                   <select name="estado" form="form-control" id="estado">
+                   <select name="estado" id="estado">
         <option value="ACTIVO">ACTIVO</option>
         <option value="INACTIVO">INACTIVO</option>
         </select>
@@ -207,7 +221,97 @@ button:hover {
               <button type="button" class="btn btn-secondary" onclick="window.history.back();" name="cancelar">Cancelar</button>
         </form>
     </div>
+              <script>
+               function mostrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "block";
+            }
+                function cerrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "none";
+            }
+             function obtenerfilaciu(boton) {
+                event.preventDefault(); // Evitar la acción predeterminada del botón
 
+                var fila = boton.parentNode.parentNode;
+                var celdas = fila.getElementsByTagName("td");
+                var datosFila = [];
+
+                for (var i = 0; i < celdas.length - 1; i++) {
+                    var valor = celdas[i].querySelector(".dato-input").textContent;
+                    datosFila.push(valor);
+// var valor2 = valor ? valor.textContent : "nada";
+// datosFila.push(valor);
+                }
+
+// Asignar los datos a los inputs correspondientes
+                document.getElementById("txtusu").value = datosFila[0];
+                document.getElementById("txtusunombre").value = datosFila[1];
+
+// Cerrar el modal
+                cerrarModal();
+            }
+            function moverFila(boton) {
+                event.preventDefault(); // Evitar la acción predeterminada del botón
+                var fila = boton.parentNode.parentNode;
+                var celdas = fila.getElementsByTagName("td");
+                var datosFila = [];
+
+                for (var i = 0; i < celdas.length - 1; i++) {
+                    var valor = celdas[i].querySelector(".dato-input").textContent;
+                    datosFila.push(valor);
+                }
+
+// Asignar los datos a los inputs correspondientes
+                document.getElementById("txtusu").value = datosFila[0];
+                document.getElementById("txtusunombre").textContent = datosFila[1];
+                cerrarModalp();
+                
+                input.focus();
+            }
+               </script>
+               
+                <div id="miModal" class="modal">
+                        <div class="modal-contenido">
+                            <label>BUSCADOR DE PERSONALES</label>
+                            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+                            <table border="1" id="mitabla">
+                                <thead>
+                                    <tr>
+                                        <th>CODIGO</th>
+                                        <th>NOMBRE</th>
+                                          <th>Apellido</th>
+                                          <th>CI</th>
+                                            <th>TELEFONO</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                     <%
+                                        personalmodelo modelo5 = new personalmodelo();
+                                        List<personalmodelo> list5 = modelo5.listar();
+                                        Iterator<personalmodelo> iter5 = list5.iterator();
+                                        personalmodelo m5 = null;
+                                        while (iter5.hasNext()) {
+                                            m5 = iter5.next();
+                                    %>
+                                    <tr>
+                                        <td><span class="dato-input"><%= m.getCodigo()%></span></td>
+                                        <td><span class="dato-input"><%= m5.getNombre()%></span></td>
+                                               <td><span class="dato-input"><%= m5.getApellido()%></span></td>
+                                        <td><span class="dato-input"><%= m5.getCi()%></span></td>
+                                         <td><span class="dato-input"><%= m5.getTelefono()%></span></td>
+                                            
+                                        
+                                        <td><button class="btn btn-success mb-2" type="button" onclick="obtenerfilaciu(this)">
+                                                SELECCIONAR</button></td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+     
     <!-- Scripts de Bootstrap y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

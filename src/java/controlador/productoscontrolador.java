@@ -1,7 +1,6 @@
-package controlador;
-
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.invoke.VarHandle;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,8 +77,14 @@ public class productoscontrolador extends HttpServlet {
             modelo.setPrecio(request.getParameter("txtprecio"));
             modelo.setStock(request.getParameter("txtstock"));
             modelo.setStockmin(request.getParameter("txtstockmin"));
-            modelo.setProveedorid(request.getParameter("txtproveedorid"));
-modelo.setIva(request.getParameter("txtiva"));
+            modelo.setProveedorid(request.getParameter("txtciudad"));     
+               String iva = request.getParameter("iva");
+               modelo.setIva(iva);
+                String categoria = request.getParameter("categoria");
+                String categoria2 = (categoria != null && categoria.equalsIgnoreCase("Insumo")) ? "Insumo" : "Servicio";
+                modelo.setCategoria(categoria2);
+
+            
             try {
                 modelo.guardar();
             } catch (SQLException ex) {
@@ -97,9 +102,11 @@ modelo.setIva(request.getParameter("txtiva"));
             modelo.setPrecio(request.getParameter("txtprecio"));
             modelo.setStock(request.getParameter("txtstock"));
             modelo.setStockmin(request.getParameter("txtstockmin"));
-            modelo.setProveedorid(request.getParameter("txtproveedorid"));
-            modelo.setIva(request.getParameter("txtiva"));
+            modelo.setIva(request.getParameter("iva"));
+            modelo.setCategoria(request.getParameter("categoria"));
+            modelo.setProveedorid(request.getParameter("txtciudad"));
 
+            
             modelo.modificar();
             //SE ESPECIFICA QUE PAGINA DEBE MOSTRAR EN LA VARIABLE ACCESO
             acceso = "productos.jsp";

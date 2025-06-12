@@ -4,6 +4,7 @@
     Author     : user
 --%>
 
+<%@page import="modelo.ciudadmodelo"%>
 <%@page import="modelo.proveedoresmodelo"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
@@ -81,14 +82,18 @@
                 <label for="txtcorreo">CORREO</label>
                 <input type="text" class="form-control" name="txtcorreo" value="<%= m.getCorreo()%>">
             </div>
-            <div class="form-group">
-                <label for="txtciudad">CIUDAD</label>
-                <input type="text" class="form-control" name="txtciudad" value="<%= m.getCiudad()%>">
-            </div>
-         
-            <button type="submit" class="btn btn-primary" name="accion" value="Editar">Editar</button>
+           
+               <div class="form-group"><BR>
+                <label for="txtusu">ID</label> <button class="btn btn-success mb-2" type="button" name="btnbuscarciu" onclick="mostrarModal()">
+                                        BUSCAR</button>
+                <input type="text" class="form-control" id="txtusu" name="txtusu" value="<%=m.getCiudad()%>">
+               <label for="txtusunombre">CIUDAD</label>
+               <input type="text" class="form-control" id="txtusunombre" name="txtusunombre" value="<>">
+            </div><BR>
+               <button type="submit" class="btn btn-primary" name="accion" value="Editar">Editar</button>
             <!-- También podrías incluir un botón para cancelar la edición -->
             <button type="button" class="btn btn-secondary" onclick="window.history.back();" name="cancelar">Cancelar</button>
+            
         </form>
     </div>
 </body>
