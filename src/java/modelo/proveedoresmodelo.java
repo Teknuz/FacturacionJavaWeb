@@ -233,5 +233,24 @@ String sql = "INSERT INTO proveedores (idproveedores, prov_nombre, prov_ruc, pro
         }
 
     }
+      public String obtenerUltimoNumeroFacturaPago() {
+    String sql = "SELECT MAX(idproveedores) as ultimoNumero FROM proveedores";
+    String ultimoNumero = "0";
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoNumero = rs.getString("ultimoNumero");
+            if (ultimoNumero == null) {
+                ultimoNumero = "0";
+            }
+        }
+        st.close();
+        rs.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(productosmodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ultimoNumero;
+}
 
 }

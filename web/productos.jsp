@@ -133,6 +133,7 @@
                         <th>STOCK</th>
                         <th>STOCK MINIMO</th>
                         <th>PROVEEDOR ID</th>
+                        <th>PROVEEDOR</th>
                         <th>IVA</th>
                         <th>CATEGORIA</th>
                         <th>ACCION</th><!-- aqui iran dos botones modificar y eliminar -->
@@ -168,6 +169,7 @@
                         <td><%= m.getStock()%></td>
                         <td><%= m.getStockmin()%></td>
                         <td><%= m.getProveedorid()%></td>
+                         <td><%= m.getProveedornombre()%></td>
                         <td><%= m.getIva()%></td>
                         <td><%= m.getCategoria()%></td>
                         

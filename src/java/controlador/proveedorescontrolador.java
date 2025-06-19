@@ -79,7 +79,7 @@ public class proveedorescontrolador extends HttpServlet {
             
              modelo.setTelefono(request.getParameter("txttelefono"));
              modelo.setCorreo(request.getParameter("txtcorreo"));
-              modelo.setCiudad(request.getParameter("txtciudad"));
+              modelo.setCiudad(request.getParameter("txtusu"));
             try {
                 modelo.guardar();
             } catch (SQLException ex) {
@@ -97,7 +97,7 @@ public class proveedorescontrolador extends HttpServlet {
             
              modelo.setTelefono(request.getParameter("txttelefono"));
              modelo.setCorreo(request.getParameter("txtcorreo"));
-              modelo.setCiudad(request.getParameter("txtciudad"));
+              modelo.setCiudad(request.getParameter("txtusu"));
             modelo.modificar();
             //SE ESPECIFICA QUE PAGINA DEBE MOSTRAR EN LA VARIABLE ACCESO
             acceso = "proveedores.jsp";

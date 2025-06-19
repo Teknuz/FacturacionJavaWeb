@@ -78,8 +78,14 @@ public class productoscontrolador extends HttpServlet {
             modelo.setPrecio(request.getParameter("txtprecio"));
             modelo.setStock(request.getParameter("txtstock"));
             modelo.setStockmin(request.getParameter("txtstockmin"));
-            modelo.setProveedorid(request.getParameter("txtproveedorid"));
-modelo.setIva(request.getParameter("txtiva"));
+            modelo.setProveedorid(request.getParameter("txtciudad"));     
+               String iva = request.getParameter("iva");
+               modelo.setIva(iva);
+                String categoria = request.getParameter("categoria");
+                String categoria2 = (categoria != null && categoria.equalsIgnoreCase("Insumo")) ? "Insumo" : "Servicio";
+                modelo.setCategoria(categoria2);
+
+            
             try {
                 modelo.guardar();
             } catch (SQLException ex) {
@@ -89,17 +95,19 @@ modelo.setIva(request.getParameter("txtiva"));
             acceso = "productos.jsp";
 
         } else if (action.equalsIgnoreCase("Editar")) {
-            //entra cuando se presiona el boton Modificar de la pagina clientes.jsp
+            
             productosmodelo modelo = new productosmodelo();
             modelo.setCodigo(request.getParameter("txtcodigo"));
             modelo.setNombre(request.getParameter("txtnombre"));
             modelo.setCosto(request.getParameter("txtcosto"));
             modelo.setPrecio(request.getParameter("txtprecio"));
             modelo.setStock(request.getParameter("txtstock"));
-            modelo.setStockmin(request.getParameter("txtstockmin"));
-            modelo.setProveedorid(request.getParameter("txtproveedorid"));
-            modelo.setIva(request.getParameter("txtiva"));
+            modelo.setMinimo(request.getParameter("txtstockmin"));
+            modelo.setIva(request.getParameter("iva"));
+            modelo.setCategoria(request.getParameter("categoria"));
+            modelo.setProveedorid(request.getParameter("txtciudad"));
 
+            
             modelo.modificar();
             //SE ESPECIFICA QUE PAGINA DEBE MOSTRAR EN LA VARIABLE ACCESO
             acceso = "productos.jsp";
