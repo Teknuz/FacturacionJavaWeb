@@ -19,7 +19,7 @@
 
         <style>
        
-            body {
+         body {
                 background-color: #343a40;
                 color: #fff;
             }
@@ -127,7 +127,7 @@
         <form action="ciudadcontrolador" method="post"><br>
             <button type="submit" name="accion" value="informe" class="btn btn-success mb-2">IMPRIMIR</button>
         </form>
-        <table class="table table-dark">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>CÓDIGO</th>
@@ -148,8 +148,8 @@
                     <td><%= m.getCodigo()%></td>
                     <td><%= m.getNombre()%></td>
                     <td>
-                        <a href="vistas/modificar_ciudad.jsp?id=<%= m.getCodigo()%>" class="btn btn-warning btn-sm">EDITAR</a> <br>
-                        <form action="ciudadcontrolador" method="post">
+                        <a href="vistas/modificar_ciudad.jsp?id=<%= m.getCodigo()%>" class="btn btn-warning btn-sm">EDITAR</a>
+                        <form action="ciudadcontrolador" method="post" style="display: inline;">
                             <input type="hidden" name="accion" value="delete">
                             <input type="hidden" name="id" value="<%= m.getCodigo()%>">
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>

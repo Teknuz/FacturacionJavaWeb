@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.clientemodelo;
 import modelo.proveedoresmodelo;
 
 /**
@@ -76,7 +75,6 @@ public class proveedorescontrolador extends HttpServlet {
             modelo.setCodigo(request.getParameter("txtcodigo"));
             modelo.setNombre(request.getParameter("txtnombre"));
             modelo.setRuc(request.getParameter("txtruc"));
-            
              modelo.setTelefono(request.getParameter("txttelefono"));
              modelo.setCorreo(request.getParameter("txtcorreo"));
               modelo.setCiudad(request.getParameter("txtusu"));
