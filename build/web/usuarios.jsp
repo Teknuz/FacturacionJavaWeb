@@ -110,20 +110,15 @@
     </header>
     <body>
        
-        <div class="container">
+        <div class="container mt-4">
             <main>
-                <!-- Título de la página usuarios -->
-                <h1 class="mb-4">FORMULARIO USUARIOS</h1>
-                <!-- Sección para agregar un nuevo usuario -->
+                <h1 class="bg-dark text-light p-3">FORMULARIO USUARIOS</h1>
                 <a class="btn btn-primary mb-2" href="vistas/guardar_usuario.jsp">GUARDAR USUARIO</a>
-                <!-- Formulario para imprimir -->
                 <form action="usuarioscontrolador" method="post">
                     <button type="submit" class="btn btn-success mb-2" name="accion" value="informe">IMPRIMIR</button>
                 </form>
-                <!-- Tabla para mostrar todos los usuarios -->
-                <table class="table table-dark table-striped">
+                <table class="table table-striped">
                     <thead>
-                        <!-- Encabezados de la tabla -->
                         <tr>
                             <th scope="col">CÓDIGO</th>
                             <th scope="col">USUARIO</th>
@@ -132,11 +127,11 @@
                             <th scope="col">ESTADO</th>
                             <th scope="col">ID PERSONAL</th>
                             <th scope="col">NOMBRE</th>
-                            <th scope="col">ACCIONES</th><!-- Columna para acciones -->
+                            <th scope="col">ACCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% // Inicio del bucle para mostrar los usuarios
+                        <% 
                             usuariosmodelo modelo = new usuariosmodelo();
                             List<usuariosmodelo> list = modelo.listar();
                             Iterator<usuariosmodelo> iter = list.iterator();
@@ -144,7 +139,7 @@
                             while (iter.hasNext()) {
                                 m = iter.next();
                         %>
-                        <!-- Fila de la tabla -->
+                     
                         <tr>
                             <td><%= m.getCodigo()%></td>
                             <td><%= m.getUsuario()%></td>

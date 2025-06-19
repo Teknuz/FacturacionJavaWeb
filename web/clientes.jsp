@@ -11,7 +11,7 @@
 
         <style>
             /* Estilos personalizados */
-            body {
+             body {
                 background-color: #343a40;
                 color: #fff;
             }
@@ -116,17 +116,16 @@
             <!-- Titulo de la pagina clientes -->
             <h1 class="bg-dark text-light p-3">FORMULARIO CLIENTES</h1>
             <!-- Sección de botones -->
-            <div class="mb-3">
+            
                 <a href="vistas/guardar_cliente.jsp" class="btn btn-primary mb-3">GUARDAR CLIENTE</a>
         
                 <form action="clientecontrolador" method="post">
             <button type="submit" value="informe" name="accion" class="btn btn-success mb-3">IMPRIMIR</button>
         </form>
     
-            </div>
             <!-- Tabla de clientes -->
-            <table class="table table-bordered">
-                <thead class="bg-dark text-light">
+            <table class="table table-striped">
+                
                     <tr>
                         <th>CÓDIGO</th>
                         <th>NOMBRE</th>
@@ -136,7 +135,6 @@
                         <th>CIUDAD</th>
                         <th>ACCION</th>
                     </tr>
-                </thead>
                 <tbody>
                     <!-- Contenido de la tabla -->
                     <%
@@ -159,7 +157,7 @@
                             <form action="clientecontrolador" method="post" class="d-inline">
                                 <input type="hidden" name="accion" value="delete">
                                 <input type="hidden" name="id" value="<%= m.getCodigo()%>">
-                                <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                <button type="submit" class="btn btn-danger btn-sm">ELIMINAR</button>
                             </form>
                         </td>
                     </tr>

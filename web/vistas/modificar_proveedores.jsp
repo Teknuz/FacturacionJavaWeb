@@ -19,8 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <style>
-            /* Estilos personalizados */
-            body {
+        body {
                 background-color: #343a40;
                 color: #fff;
             }
@@ -34,8 +33,69 @@
                 color: #adb5bd;
             }
             .btn {
-                margin-right: 5px;
+                margin-left: 5px;
             }
+            table {
+    width: 100%;
+    border-collapse: unset;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    color: #fff;
+}
+
+  
+
+button {
+    margin: 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+            button:hover {
+    background-color: #0056b3;
+}
+            .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+            .modal-contenido {
+    background-color: #343a40;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    
+    height: auto;
+    overflow: auto;
+    text-align: center;
+}
+
+
+
+.cerrar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar:hover, .cerrar:focus {
+    color: #fff;
+}
         </style>
 </head>
 
@@ -88,7 +148,7 @@
                                         BUSCAR</button>
                 <input type="text" class="form-control" id="txtusu" name="txtusu" value="<%=m.getCiudad()%>">
                <label for="txtusunombre">CIUDAD</label>
-               <input type="text" class="form-control" id="txtusunombre" name="txtusunombre" value="<>">
+               <input type="text" class="form-control" id="txtusunombre" name="txtusunombre" value="<%=m.getCiudad_nombre()%>">
             </div><BR>
                <button type="submit" class="btn btn-primary" name="accion" value="Editar">Editar</button>
             <!-- También podrías incluir un botón para cancelar la edición -->
@@ -96,5 +156,66 @@
             
         </form>
     </div>
+            <BR>
+             <script>
+               function mostrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "block";
+            }
+                function cerrarModal() {
+                event.preventDefault();
+                document.getElementById("miModal").style.display = "none";
+            }
+             function obtenerfilaciu(boton) {
+                event.preventDefault(); // Evitar la acción predeterminada del botón
+
+                var fila = boton.parentNode.parentNode;
+                var celdas = fila.getElementsByTagName("td");
+                var datosFila = [];
+
+                for (var i = 0; i < celdas.length - 1; i++) {
+                    var valor = celdas[i].querySelector(".dato-input").textContent;
+                    datosFila.push(valor);
+                }
+                document.getElementById("txtusu").value = datosFila[0];
+                document.getElementById("txtusunombre").value = datosFila[1];
+                cerrarModal();
+            }
+           
+               </script>
+               
+                <div id="miModal" class="modal">
+                        <div class="modal-contenido">
+                                <label>BUSCADOR DE CIUDADES</label>
+                            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+                            <table border="1" id="mitabla">
+                                <thead>
+                                    <tr>
+                                        <th>CODIGO</th>
+                                        <th>NOMBRE</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%
+                                        ciudadmodelo modelo2 = new ciudadmodelo();
+                                        List<ciudadmodelo> list2 = modelo2.listar();
+                                        Iterator<ciudadmodelo> iter2 = list2.iterator();
+                                        ciudadmodelo m2 = null;
+                                        while (iter2.hasNext()) {
+                                            m2 = iter2.next();
+                                    %>
+                                    <tr>
+                                        <td><span class="dato-input"><%= m2.getCodigo()%></span></td>
+                                        <td><span class="dato-input"><%= m2.getNombre()%></span></td>
+                                        <td><button class="btn btn-success mb-2" type="button" onclick="obtenerfilaciu(this)">
+                                                SELECCIONAR</button></td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            
 </body>
 </html>

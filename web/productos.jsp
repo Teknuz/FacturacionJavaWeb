@@ -112,31 +112,30 @@
 <body>
     <div class="container mt-4">
        
-        <main>
+    
             <!--titulo de la pagina clientes -->
             <h1>FORMULARIO PRODUCTOS</h1>
             <!-- SE CREA LA ESTRUCTURA DEL FORMULARIO CLIENTES -->
             <!-- se agrega un hiperviculo para abrir una nueva página para agregar cleintes a la bd -->
-            <a href="vistas/guardar_productos.jsp" class="btn btn-primary mb-3">GUARDAR PRODUCTOS</a>
+            <a href="vistas/guardar_productos.jsp" class="btn btn-primary mb-2">GUARDAR PRODUCTOS</a>
             <form action="productoscontrolador" method="post">
-                <button type="submit" class="btn btn-success mb-3" name="accion" value="informe">IMPRIMIR</button>
+                <button type="submit" class="btn btn-success mb-2" name="accion" value="informe">IMPRIMIR</button>
             </form>
-            <!-- se agrega una tabla para visualizar a todos los clientes de la base de datos -->
-            <table class="table table-dark table-striped">
+
+            <table class="table table-striped">
                 <thead >
-                    <!-- para el encabezado se colocan los atributos segun la tabla cliente -->
                     <tr>
-                        <th>CÓDIGO</th>
-                        <th>NOMBRE</th>
-                        <th>COSTO</th>
-                        <th>PRECIO</th>
-                        <th>STOCK</th>
-                        <th>STOCK MINIMO</th>
-                        <th>PROVEEDOR ID</th>
-                        <th>PROVEEDOR</th>
-                        <th>IVA</th>
-                        <th>CATEGORIA</th>
-                        <th>ACCION</th><!-- aqui iran dos botones modificar y eliminar -->
+                        <th scope="col">CÓDIGO</th>
+                        <th scope="col">NOMBRE</th>
+                        <th scope="col">COSTO</th>
+                        <th scope="col">PRECIO</th>
+                        <th scope="col">STOCK</th>
+                        <th scope="col">STOCK MINIMO</th>
+                        <th scope="col">PROVEEDOR ID</th>
+                        <th scope="col">PROVEEDOR</th>
+                        <th scope="col">IVA</th>
+                        <th scope="col">CATEGORIA</th>
+                        <th scope="col">ACCION</th><!-- aqui iran dos botones modificar y eliminar -->
                     </tr>
                 </thead>
                 <% 
@@ -156,12 +155,6 @@
                 %>
                 <tbody>
                     <tr>
-                        <!-- aqui del objeto m se va obteniendo los valores por separado segun como corrresponda 
-                        columna 1 es para codigo
-                        columna 2 es para nombre
-                        columna 3 es para apellido
-                        columna 4 es para ruc/ci
-                        -->
                         <td><%= m.getCodigo()%></td>
                         <td><%= m.getNombre()%></td>
                         <td><%= m.getCosto()%></td>
@@ -172,23 +165,19 @@
                          <td><%= m.getProveedornombre()%></td>
                         <td><%= m.getIva()%></td>
                         <td><%= m.getCategoria()%></td>
-                        
-                        <!-- Se envía el id a la pagina modificarcliente.jsp para buscar el cliente a modificar -->
-                        <td>
-                            <a href="vistas/modificar_productos.jsp?id=<%= m.getCodigo()%>" class="btn btn-warning btn-sm">EDITAR</a>
-                            <form action="productoscontrolador" method="post" class="d-inline">
+                    <td>
+                          
+                             <form action="productoscontrolador" method="post" style="display: inline;">
+                                 <a class="btn btn-warning btn-sm" href="vistas/modificar_productos.jsp?id=<%= m.getCodigo()%>">EDITAR</a>
                                 <input type="hidden" name="accion" value="delete">
                                 <input type="hidden" name="id" value="<%= m.getCodigo()%>">
-                                <button type="submit" class="btn btn-danger btn-sm">ELIMINAR</button>
-                            </form>
-                           
-                           
-                        </td>
-                    </tr>
+                                <button type="submit" class="btn btn-danger btn-sm" name="eliminar">ELIMINAR</button>
+                        </form>
+                    </td>
+                   </tr>
                     <% } %>
                 </tbody>
             </table>
-        </main>
     </div>
     <!-- Scripts de Bootstrap (jQuery y Popper.js son requeridos para Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

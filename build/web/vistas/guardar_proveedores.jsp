@@ -161,35 +161,12 @@ button:hover {
                 for (var i = 0; i < celdas.length - 1; i++) {
                     var valor = celdas[i].querySelector(".dato-input").textContent;
                     datosFila.push(valor);
-// var valor2 = valor ? valor.textContent : "nada";
-// datosFila.push(valor);
                 }
-
-// Asignar los datos a los inputs correspondientes
                 document.getElementById("txtusu").value = datosFila[0];
                 document.getElementById("txtusunombre").value = datosFila[1];
-
-// Cerrar el modal
                 cerrarModal();
             }
-            function moverFila(boton) {
-                event.preventDefault(); // Evitar la acción predeterminada del botón
-                var fila = boton.parentNode.parentNode;
-                var celdas = fila.getElementsByTagName("td");
-                var datosFila = [];
-
-                for (var i = 0; i < celdas.length - 1; i++) {
-                    var valor = celdas[i].querySelector(".dato-input").textContent;
-                    datosFila.push(valor);
-                }
-
-// Asignar los datos a los inputs correspondientes
-                document.getElementById("txtusu").value = datosFila[0];
-                document.getElementById("txtusunombre").textContent = datosFila[1];
-                cerrarModalp();
-                
-                input.focus();
-            }
+           
                </script>
                
                 <div id="miModal" class="modal">

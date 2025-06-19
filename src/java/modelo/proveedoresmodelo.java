@@ -15,9 +15,20 @@ public class proveedoresmodelo {
 
     private String codigo, nombre, apellido, ci, mensaje,telefono,correo,ciudad;
     private String ruc;
+    private String ciudad_nombre;
     Statement st;
     ResultSet rs;
 
+    public String getCiudad_nombre() {
+        return ciudad_nombre;
+    }
+
+    public void setCiudad_nombre(String ciudad_nombre) {
+        this.ciudad_nombre = ciudad_nombre;
+    }
+
+    
+    
     public String getRuc() {
         return ruc;
     }
@@ -172,23 +183,29 @@ String sql = "INSERT INTO proveedores (idproveedores, prov_nombre, prov_ruc, pro
         ArrayList<proveedoresmodelo> list = new ArrayList<>();
         // Se define una consulta SQL para seleccionar todos los registros de la tabla 'clientes'.
         String sql = "select * from proveedores where idproveedores='" + id + "'";
+        
+ String sql2 = "SELECT p.idproveedores, p.prov_nombre, p.prov_ruc, p.prov_telefono, p.prov_correo, ci.ciu_nombre AS nombre_ciudad, ci.idciudades AS id_ciudad\n" +
+"FROM programacionv2024.proveedores p\n" +
+"INNER JOIN programacionv2024.ciudades ci ON p.ciudades_idciudades = ci.idciudades\n"
+         + "where p.idproveedores=" + id + "";
 
         try {
             //se abre y se prepara la conexion
             st = utilidades.conexion.sta(st);
             // Se ejecuta la consulta SQL y se obtiene un conjunto de resultados segun el sql
-            rs = st.executeQuery(sql);
+            rs = st.executeQuery(sql2);
             // Se itera sobre cada fila del conjunto de resultados hasta que no haya resultados
             while (rs.next()) {
                 //se realiza la instancia de la misma clase para contener los datos extraidos de la consulta
                 proveedoresmodelo modelo = new proveedoresmodelo();
                 //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
-                modelo.setCodigo(rs.getString("idproveedores"));
-                modelo.setNombre(rs.getString("prov_nombre"));
-                modelo.setRuc(rs.getString("prov_ruc"));
-                modelo.setTelefono(rs.getString("prov_telefono"));
-                modelo.setCorreo(rs.getString("prov_correo"));
-                  modelo.setCiudad(rs.getString("ciudades_idciudades"));
+                modelo.setCodigo(rs.getString("p.idproveedores"));
+                modelo.setNombre(rs.getString("p.prov_nombre"));
+                modelo.setRuc(rs.getString("p.prov_ruc"));
+                modelo.setTelefono(rs.getString("p.prov_telefono"));
+                modelo.setCorreo(rs.getString("p.prov_correo"));
+                  modelo.setCiudad(rs.getString("id_ciudad"));
+                  modelo.setCiudad_nombre(rs.getString("nombre_ciudad"));
                   
                   
                 // Se agrega el objeto 'clientemodelo' a la lista. para luego transportar a la tabla de la página cliente.jsp

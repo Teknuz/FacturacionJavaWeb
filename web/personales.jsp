@@ -120,18 +120,16 @@
       
     
     <div class="container mt-4">
-        <!-- Titulo de la pagina -->
+
         <h1 class="bg-dark text-light p-3">FORMULARIO PERSONALES</h1>
         
-        <!-- Enlace para agregar nuevo personal -->
-        <a class="btn btn-primary " href="vistas/guardar_personal.jsp">GUARDAR PERSONAL</a> <br>
-        
-        <!-- Formulario para imprimir --> <br>
-        <form action="personalcontrolador" method="post">
+        <a class="btn btn-primary " href="vistas/guardar_personal.jsp">GUARDAR PERSONAL</a>
+       
+        <form action="personalcontrolador" method="post"><br>
             <button type="submit" value="informe" name="accion" class="btn btn-success mb-3"  >IMPRIMIR</button>
         </form>
         
-        <!-- Tabla para visualizar todos los personales de la base de datos -->
+        
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -145,9 +143,9 @@
             </thead>
             <tbody>
                 <% 
-                    // Se instancia el modelo para comunicarse con la base de datos
+                    
                     personalmodelo modelo = new personalmodelo();
-                    // Se obtiene la lista de personales
+                    
                     List<personalmodelo> list = modelo.listar();
                     // Se crea un iterador para recorrer la lista
                     Iterator<personalmodelo> iter = list.iterator();
