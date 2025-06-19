@@ -176,5 +176,24 @@ String sql = "INSERT INTO ciudades (idciudades, ciu_nombre) "
         }
 
     }
+           public String obtenerUltimoNumeroFacturaPago() {
+    String sql = "SELECT MAX(idciudades) as ultimoNumero FROM ciudades";
+    String ultimoNumero = "0";
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoNumero = rs.getString("ultimoNumero");
+            if (ultimoNumero == null) {
+                ultimoNumero = "0";
+            }
+        }
+        st.close();
+        rs.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(personalmodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return ultimoNumero;
+}
 
 }
