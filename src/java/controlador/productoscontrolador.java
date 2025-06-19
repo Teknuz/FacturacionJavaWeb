@@ -1,6 +1,7 @@
+package controlador;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.invoke.VarHandle;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,14 +95,14 @@ public class productoscontrolador extends HttpServlet {
             acceso = "productos.jsp";
 
         } else if (action.equalsIgnoreCase("Editar")) {
-            //entra cuando se presiona el boton Modificar de la pagina clientes.jsp
+            
             productosmodelo modelo = new productosmodelo();
             modelo.setCodigo(request.getParameter("txtcodigo"));
             modelo.setNombre(request.getParameter("txtnombre"));
             modelo.setCosto(request.getParameter("txtcosto"));
             modelo.setPrecio(request.getParameter("txtprecio"));
             modelo.setStock(request.getParameter("txtstock"));
-            modelo.setStockmin(request.getParameter("txtstockmin"));
+            modelo.setMinimo(request.getParameter("txtstockmin"));
             modelo.setIva(request.getParameter("iva"));
             modelo.setCategoria(request.getParameter("categoria"));
             modelo.setProveedorid(request.getParameter("txtciudad"));

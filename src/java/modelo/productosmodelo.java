@@ -369,12 +369,26 @@ public class productosmodelo {
     }
 
     public void modificar() {
-        String sql = "UPDATE productos SET pro_nombre='" + nombre + "', pro_costo='" + costo + "', pro_precio='" + precio + "', pro_stock='" + stock + "', pro_min='" + stockmin + "', proveedores_idproveedores='" + proveedorid + "', pro_iva='" + iva + "', pro_categoria='" + categoria + "' WHERE idproductos = " + codigo;
+        String sql = "UPDATE productos SET pro_nombre='" + nombre + "', pro_costo='" + costo + "', pro_precio='" + precio + "', pro_stock='" + stock + "', pro_min='" + minimo + "', proveedores_idproveedores='" + proveedorid + "', pro_iva='" + iva + "', pro_categoria='" + categoria + "' WHERE idproductos = " + codigo;
          
+        
+        
+        
+        
+            String sql2 = "Update productos set "
+                + "pro_nombre='" + nombre + "',"
+                + "pro_costo='" + costo + "',"
+                + "pro_precio='" + precio + "',"
+                + "pro_stock='" + stock + "',"
+                + "pro_min='" + minimo + "',"
+                + "pro_iva='" + iva + "',"
+                + "pro_categoria='" + categoria + "',"
+                + "proveedores_idproveedores='" + proveedorid + "' where idproductos='" + codigo + "'";
+
 
         try {
             st = utilidades.conexion.sta(st);
-            st.executeUpdate(sql);
+            st.executeUpdate(sql2);
             st.close();
             mensaje = "MODIFICADO";
         } catch (SQLException ex) {

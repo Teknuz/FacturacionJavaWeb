@@ -3,20 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/vistas/modificar_proveedores.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/proveedores.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/productos.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/modelo/productosmodelo.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/vistas/guardar_productos.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/vistas/modificar_productos.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/modelo/proveedoresmodelo.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/vistas/guardar_proveedores.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/vistas/guardar_usuario.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/controlador/usuarioscontrolador.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/web/vistas/modificar_usuario.jsp</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/controlador/proveedorescontrolador.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/controlador/productoscontrolador.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/modelo/usuariosmodelo.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/JavaWEB/proyecto/src/java/productoscontrolador.java</file>
         </group>
     </open-files>
 </project-private>
