@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="productos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cda4c76f-db8e-4ec5-ac7a-073ce6229809">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     productos.`idproductos` AS productos_idproductos,
+     productos.`pro_nombre` AS productos_pro_nombre,
+     productos.`pro_costo` AS productos_pro_costo,
+     productos.`pro_precio` AS productos_pro_precio,
+     productos.`pro_stock` AS productos_pro_stock,
+     productos.`pro_min` AS productos_pro_min,
+     productos.`proveedores_idproveedores` AS productos_proveedores_idproveedores,
+     proveedores.`prov_nombre` AS proveedores_prov_nombre,
+     proveedores.`idproveedores` AS proveedores_idproveedores
+FROM
+     `proveedores` proveedores INNER JOIN `productos` productos ON proveedores.`idproveedores` = productos.`proveedores_idproveedores`]]>
+	</queryString>
+	<field name="productos_idproductos" class="java.lang.Integer"/>
+	<field name="productos_pro_nombre" class="java.lang.String"/>
+	<field name="productos_pro_costo" class="java.lang.Integer"/>
+	<field name="productos_pro_precio" class="java.lang.Integer"/>
+	<field name="productos_pro_stock" class="java.lang.Integer"/>
+	<field name="productos_pro_min" class="java.lang.Integer"/>
+	<field name="productos_proveedores_idproveedores" class="java.lang.Integer"/>
+	<field name="proveedores_prov_nombre" class="java.lang.String"/>
+	<field name="proveedores_idproveedores" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="145" y="27" width="273" height="39" uuid="f90769da-b291-4c07-9f67-e929816a6f9c"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE PRODUCTOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="68" height="20" uuid="a7860071-d770-4e82-8086-857e9de86a4e"/>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="0" width="87" height="20" uuid="13732400-7847-4add-996d-f418fa57bded"/>
+				<text><![CDATA[COSTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="78" height="20" uuid="689efff5-01a5-462f-ad19-154e95e0482f"/>
+				<text><![CDATA[PRECIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="0" width="53" height="20" uuid="93a6bcb7-7b77-469c-96d5-016d3afbdbdd"/>
+				<text><![CDATA[STOCK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="3" width="62" height="20" uuid="ed2a6d3b-deba-4d06-82d7-32fbe0cf22a4"/>
+				<text><![CDATA[MINIMO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="3" width="70" height="20" uuid="dfd741c8-218e-4a62-949d-7fca0a5b1eac"/>
+				<text><![CDATA[ID PROOV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="3" width="100" height="20" uuid="2cdc5da9-ce54-4a98-93c4-dea513f4baec"/>
+				<text><![CDATA[PROVEEDOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="68" height="20" uuid="b57acfb4-7ce0-464c-87a3-bbbf548975cf"/>
+				<textFieldExpression><![CDATA[$F{productos_pro_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="0" width="87" height="20" uuid="93c4706c-123a-483c-bc37-fba198b5eefd"/>
+				<textFieldExpression><![CDATA[$F{productos_pro_costo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="3" width="78" height="20" uuid="9f5b7268-3187-4b52-baef-a0aee126e9e0"/>
+				<textFieldExpression><![CDATA[$F{productos_pro_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="3" width="53" height="20" uuid="6d970a14-5848-4320-8cd8-5af7b3c7bc37"/>
+				<textFieldExpression><![CDATA[$F{productos_pro_stock}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="3" width="62" height="20" uuid="6da120a0-c50f-4598-ac9c-a56e1d024ccf"/>
+				<textFieldExpression><![CDATA[$F{productos_pro_min}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="3" width="70" height="20" uuid="d07519b8-798a-4fb7-a0fa-c262719beea3"/>
+				<textFieldExpression><![CDATA[$F{productos_proveedores_idproveedores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="3" width="100" height="20" uuid="44c9f816-9eaf-4c87-a4f2-e68b05aece24"/>
+				<textFieldExpression><![CDATA[$F{proveedores_prov_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
