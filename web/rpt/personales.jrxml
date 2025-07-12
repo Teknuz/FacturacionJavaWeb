@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="personales" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d41a9353-a4b8-495f-90a2-b2ba2d855ef3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     personales.`idpersonales` AS personales_idpersonales,
+     personales.`per_nombre` AS personales_per_nombre,
+     personales.`per_apellido` AS personales_per_apellido,
+     personales.`per_ci` AS personales_per_ci,
+     personales.`per_telefono` AS personales_per_telefono
+FROM
+     `personales` personales]]>
+	</queryString>
+	<field name="personales_idpersonales" class="java.lang.Integer"/>
+	<field name="personales_per_nombre" class="java.lang.String"/>
+	<field name="personales_per_apellido" class="java.lang.String"/>
+	<field name="personales_per_ci" class="java.lang.String"/>
+	<field name="personales_per_telefono" class="java.lang.String"/>
+	<variable name="personales_per_nombre_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{personales_per_nombre}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="186" y="30" width="214" height="49" uuid="bdc9d440-eab5-402a-8cce-1e40c4dea69f"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Listado de Personales]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8d105f5b-3dae-4662-93fe-46f468454c95"/>
+				<textFieldExpression><![CDATA[$F{personales_idpersonales}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="fa7493bd-987f-4668-9772-9e5cc9de7193"/>
+				<textFieldExpression><![CDATA[$F{personales_per_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="85447260-bc2b-4380-a019-5fc5cfaf036f"/>
+				<textFieldExpression><![CDATA[$F{personales_per_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="96af1cdc-fb7b-430b-94d0-372366cdb8d8"/>
+				<textFieldExpression><![CDATA[$F{personales_per_ci}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="4fc8bd1d-5991-4938-b36b-005447c115d6"/>
+				<textFieldExpression><![CDATA[$F{personales_per_telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
