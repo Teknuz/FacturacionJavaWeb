@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5fc0722-71ec-4720-b6be-879e6085b75f">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="factura" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\JoseG\\Downloads\\EF_JG_Peluqueria_MarcosM_JoseG\\EF_JG_Peluqueria_MarcosM_JoseG\\JG_peluqueria\\web\rpt"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ventas.`idventas` AS ventas_idventas,
+     ventas.`ven_fecha` AS ventas_ven_fecha,
+     ventas.`ven_condicion` AS ventas_ven_condicion,
+     ventas.`ven_estado` AS ventas_ven_estado,
+     ventas.`clientes_idclientes` AS ventas_idclientes,
+     ventas.`aperturas_idaperturas` AS ventas_idaperturas,
+     clientes.`idclientes` AS clientes_idclientes,
+     clientes.`cli_nombre` AS clientes_cli_nombre,
+     clientes.`cli_apellido` AS clientes_cli_apellido,
+     clientes.`cli_ruc` AS clientes_cli_ruc,
+     clientes.`cli_telefono` AS clientes_cli_telefono,
+     clientes.`ciudades_idciudades` AS clientes_idciudades,
+concat(clientes.`cli_nombre`,' ',clientes.`cli_apellido`)as cliente,
+if(ventas.`ven_condicion`='CONTADO','X',' ') as contado,
+if(ventas.`ven_condicion`='CREDITO','X',' ') as credito
+FROM
+     `clientes` clientes INNER JOIN `ventas` ventas ON clientes.`idclientes` = ventas.`clientes_idclientes`
+where ventas.`idventas`=$P{factura}]]>
+	</queryString>
+	<field name="ventas_idventas" class="java.lang.Integer"/>
+	<field name="ventas_ven_fecha" class="java.sql.Date"/>
+	<field name="ventas_ven_condicion" class="java.lang.String"/>
+	<field name="ventas_ven_estado" class="java.lang.String"/>
+	<field name="ventas_idclientes" class="java.lang.Integer"/>
+	<field name="ventas_idaperturas" class="java.lang.Integer"/>
+	<field name="clientes_idclientes" class="java.lang.Integer"/>
+	<field name="clientes_cli_nombre" class="java.lang.String"/>
+	<field name="clientes_cli_apellido" class="java.lang.String"/>
+	<field name="clientes_cli_ruc" class="java.lang.String"/>
+	<field name="clientes_cli_telefono" class="java.lang.String"/>
+	<field name="clientes_idciudades" class="java.lang.Integer"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="contado" class="java.lang.String"/>
+	<field name="credito" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="233" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="270" height="143" uuid="27a6d54a-e662-47fc-994d-61bae4c14f42"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="285" y="0" width="270" height="143" uuid="262e5561-36cd-40a2-a371-b7c9bdc3e5fb"/>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="105" width="270" height="1" uuid="23f447e9-794d-4fb3-8ac3-95108de236ea"/>
+			</line>
+			<staticText>
+				<reportElement x="77" y="22" width="193" height="25" uuid="8a8392ae-bfdb-4de2-8cb9-2d734e69f913"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="47" width="193" height="20" uuid="ebdff8c4-c52d-4208-9bf4-175600241916"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BARBERIA & PELUQUERIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="67" width="193" height="20" uuid="d84da6e6-be54-47ed-a1cf-47a5c53fa73f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[Teléfono: 0986202684]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="270" height="37" uuid="2a4e87ca-866b-4ec5-99b8-300f41611f56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium" size="14"/>
+				</textElement>
+				<text><![CDATA[Ypacaraí - Paraguay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="22" width="270" height="20" uuid="fe930152-f218-4f20-aca2-a5f5b2813383"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[TIMBRADO Nº 542135]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="42" width="270" height="20" uuid="51cd9ede-a2e2-4917-97f9-2ed29eac0944"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio: 01/01/2024]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="62" width="270" height="20" uuid="156360d5-13a4-437e-b68f-8de032933ffa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[Fecha FIn: 01/01/2025]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="82" width="100" height="20" forecolor="#FF0033" uuid="f5f35b3c-c707-45bf-bbbc-4cd86921f980"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[001-001-0Nº]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="105" width="270" height="38" uuid="a47bdb9d-b7f0-4014-b838-5a9c9aebe41c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium" size="18"/>
+				</textElement>
+				<text><![CDATA[F A C T U R A]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="153" width="344" height="20" uuid="4d109aa9-0ca0-4e51-9395-eaf31e1c1704"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="344" y="153" width="211" height="20" uuid="e25335a0-81a5-4b2f-ab6a-ab83b0531d7f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="173" width="344" height="20" uuid="a4d58f3b-6554-4288-afc0-9ffd9f9a1c55"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="344" y="173" width="211" height="20" uuid="47547e2b-4a59-4498-bc32-21abfb89c41a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="193" width="555" height="20" uuid="f437c3d5-ef4a-41f0-9844-fafbe2855b81"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="213" width="555" height="20" uuid="83bb5c45-5cbe-467a-bb4e-bba2424b6f6d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="344" y="153" width="211" height="20" uuid="6f6c3142-ed6c-476f-bb94-1cedd60beb9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[CONDICIÓN DE VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="173" width="50" height="20" uuid="f994ac35-390d-419a-b3c9-13d11c1d3887"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[CREDITO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="153" width="100" height="20" uuid="f643bb3e-2e49-439b-8bae-3e53077d08dc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[FECHA DE EMISIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="173" width="158" height="20" uuid="18b8a3b8-20bd-4155-ab5f-d6457ef9acfc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[NOMBRE O RAZON SOCIAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="193" width="71" height="20" uuid="7c6af353-9371-4efc-913a-71573f5b3075"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[RUC Y/O CI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="213" width="71" height="20" uuid="cd7bb9e4-499a-45f5-8310-9d026b2a4c80"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[TELÉFONO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="173" width="68" height="20" uuid="19491441-1dee-46c1-8e65-99e00d0d5e40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[CONTADO:]]></text>
+			</staticText>
+			<ellipse>
+				<reportElement x="394" y="173" width="32" height="20" uuid="547b7873-72a0-4eed-b36c-2c516e8e0829"/>
+			</ellipse>
+			<ellipse>
+				<reportElement x="509" y="173" width="32" height="20" uuid="d418a2e2-d14d-45b0-94bd-7512a8f81c32"/>
+			</ellipse>
+			<textField>
+				<reportElement x="426" y="82" width="38" height="20" forecolor="#FF0033" uuid="1ac2b6d9-5f45-456b-95a2-45c902dd44ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventas_idventas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="173" width="180" height="20" uuid="9b0486d7-712a-43f2-9451-d111e996d015"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="509" y="173" width="32" height="20" uuid="c1523ac0-c8c1-443d-a5a3-e4b243ae47b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="173" width="32" height="20" uuid="f361deaf-f10b-414d-9058-d1d522fa87ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="153" width="238" height="20" uuid="fe17dd49-afbd-4516-a048-a9d546eaeb21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventas_ven_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="193" width="134" height="20" uuid="f9b1b51d-1658-498c-9d6f-33f018ebbc85"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_cli_ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="213" width="134" height="20" uuid="50700388-681b-4028-8296-8a9194ceeb13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_cli_telefono}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="25" y="22" width="65" height="65" uuid="61386003-a47c-4fab-a434-c9a7f94f98af"/>
+				<imageExpression><![CDATA[".\\logo4.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="400" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="57" height="40" uuid="ac0320f6-cff6-4343-9867-4ac877ab146b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="57" y="0" width="207" height="40" uuid="8cdf5489-2a21-49e1-b389-220e463bf004"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="264" y="0" width="74" height="40" uuid="f308dcf9-b431-439c-8b37-c2b80fe47776"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="338" y="0" width="217" height="20" uuid="843e7f8c-1f70-4eb0-b660-76c2253e62ba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="338" y="20" width="85" height="20" uuid="88e16247-6448-4d51-8014-c2cba822c9de"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="20" width="66" height="20" uuid="9eb833e0-1e42-4a7a-b6df-41a021a713ee"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="489" y="20" width="66" height="20" uuid="0ebb9d75-844c-404b-8adf-bcf85333255e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="40" width="57" height="270" uuid="9a21ed45-d152-49c7-b266-5eadb08c071b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-376" y="-240" width="207" height="270" uuid="ab1c8788-a971-4961-a3e0-9943a45cb2cf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="264" y="40" width="74" height="270" uuid="35848f3e-f23b-42c1-8c52-4e364ad60284"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="40" width="66" height="270" uuid="d3853380-c701-4d2c-a04e-afebbe3b164d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="489" y="40" width="66" height="270" uuid="a58fba77-f645-4a75-be65-34966db16fbf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="57" height="40" uuid="ae9cfee0-1e3b-493a-8374-ed9d25ae7194"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="57" y="0" width="207" height="40" uuid="103e8135-ae8a-4cc5-8097-c924c9fdabf0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="0" width="74" height="40" uuid="eed06241-e8e2-44a2-bae2-7b62a73a7bc1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[PRECIO UNITARIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="0" width="217" height="20" uuid="5eb08757-9c3f-4a1f-8fb7-764ced334233"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[VALOR DE VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="20" width="85" height="20" uuid="3ef06f49-9fea-453c-8bff-1761d8f81fe8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[EXENTAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="20" width="66" height="20" uuid="934af0fc-5a94-4559-bb0f-04c664483209"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[5%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="20" width="66" height="20" uuid="86d39d33-c13c-44a8-bdfb-d2b5bed9e6b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[10%]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="310" width="338" height="40" uuid="8da1b4f2-7944-4f98-9466-a375097d7b37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="338" y="310" width="85" height="40" uuid="6656177d-033d-4f39-a421-6f1d596a5749"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="310" width="66" height="40" uuid="ee5c707f-5f58-4ffd-8744-bb808c8fdfa0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="489" y="310" width="66" height="40" uuid="fdb5f944-89d5-4574-a6a1-4c97150fdd12"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="350" width="555" height="20" uuid="df933417-8271-4b55-b39b-6bbb44a4668c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="370" width="423" height="30" uuid="5988f217-7847-47de-bcb1-4cf60d581bc8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="370" width="132" height="30" uuid="6584bbd5-6f96-456c-8b09-506ee1b4767d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="370" width="423" height="30" uuid="bb82b1e0-c4b1-4783-9ff3-ffa04e651886"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[Liq: del IVA: (5%)........................(10%).................................Total IVA:......................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="310" width="106" height="40" uuid="c577c164-d32e-4ac1-8226-15b250f50271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[TOTAL A PAGAR EN GUARANIES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="310" width="74" height="40" uuid="49915a2c-0937-4e4c-bc6c-88f899689475"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<text><![CDATA[SUB TOTALES]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="423" y="356" width="50" height="7" uuid="904bd24b-34f5-4928-baaf-36c05a5e30ad"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\total.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="338" y="310" width="85" height="40" uuid="8402d6b2-0079-4b92-9f2f-4c70ae7f18b7"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\subexenta.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="423" y="310" width="66" height="40" uuid="db606247-b2c8-4c02-b348-a7e68ac6d75d"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\subcinco.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="489" y="310" width="66" height="40" uuid="5624614e-0d81-4342-a0b6-a5ce0da1371c"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\subdiez.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="301" y="355" width="63" height="7" uuid="51ed7743-bb77-4397-91c0-e0f73aef0ae8"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\liqtotal.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="67" y="356" width="70" height="7" uuid="da5628d4-0ebd-41ac-9e39-c909a36425ac"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\liq5.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="164" y="356" width="64" height="7" uuid="53687377-dcdd-42ae-ad2e-67853e505b69"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[".\\liq10.jasper"]]></subreportExpression>
+			</subreport>
+			<elementGroup/>
+			<subreport>
+				<reportElement x="6" y="50" width="549" height="90" uuid="69db753d-98ff-4df2-b248-977ee333696e"/>
+				<subreportParameter name="factura">
+					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\Users\\JoseG\\Downloads\\EF_JG_Peluqueria_MarcosM_JoseG\\EF_JG_Peluqueria_MarcosM_JoseG\\JG_peluqueria\\web\\rpt\\detalle2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

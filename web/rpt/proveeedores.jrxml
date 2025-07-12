@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proveeedores" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5994e4e2-97b8-415c-b6bb-7541ce898bf3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     proveedores.`idproveedores` AS proveedores_idproveedores,
+     proveedores.`prov_nombre` AS proveedores_prov_nombre,
+     proveedores.`prov_ruc` AS proveedores_prov_ruc,
+     proveedores.`prov_telefono` AS proveedores_prov_telefono,
+     proveedores.`prov_correo` AS proveedores_prov_correo,
+     proveedores.`ciudades_idciudades` AS proveedores_ciudades_idciudades,
+     ciudades.`idciudades` AS ciudades_idciudades,
+     ciudades.`ciu_nombre` AS ciudades_ciu_nombre
+FROM
+     `ciudades` ciudades INNER JOIN `proveedores` proveedores ON ciudades.`idciudades` = proveedores.`ciudades_idciudades`]]>
+	</queryString>
+	<field name="proveedores_idproveedores" class="java.lang.Integer"/>
+	<field name="proveedores_prov_nombre" class="java.lang.String"/>
+	<field name="proveedores_prov_ruc" class="java.lang.String"/>
+	<field name="proveedores_prov_telefono" class="java.lang.String"/>
+	<field name="proveedores_prov_correo" class="java.lang.String"/>
+	<field name="proveedores_ciudades_idciudades" class="java.lang.Integer"/>
+	<field name="ciudades_idciudades" class="java.lang.Integer"/>
+	<field name="ciudades_ciu_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="113" y="21" width="329" height="43" uuid="7a47cf25-62ca-47b1-a479-581111e47313"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE PROVEEDORES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="85" y="0" width="28" height="20" uuid="09a71f96-8246-4de9-93f7-fba6ac36176a"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="0" width="67" height="20" uuid="bf15c885-d5ed-4980-b440-a6fa803baf10"/>
+				<text><![CDATA[PROVEEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="0" width="41" height="20" uuid="469aab84-0e74-4bd5-9b67-23cdcf873e50"/>
+				<text><![CDATA[RUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="62" height="20" uuid="c0898060-f601-4556-9b89-ae6de88669c6"/>
+				<text><![CDATA[TELEFONO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="0" width="60" height="20" uuid="737244c3-b688-4e20-804a-a9de29a74012"/>
+				<text><![CDATA[CORREO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="0" width="100" height="20" uuid="be19ae7a-2fc9-4b76-bfed-302bac39f683"/>
+				<text><![CDATA[CIUDAD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="85" y="0" width="28" height="20" uuid="756c81cc-3982-46c7-ab9f-03e369301541"/>
+				<textFieldExpression><![CDATA[$F{proveedores_idproveedores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="0" width="67" height="20" uuid="6299a66d-dfcf-4749-b567-11c8a8d3a53b"/>
+				<textFieldExpression><![CDATA[$F{proveedores_prov_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="41" height="20" uuid="de14bd1f-94ac-4913-a085-1a2784497e22"/>
+				<textFieldExpression><![CDATA[$F{proveedores_prov_ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="62" height="20" uuid="9829bfe2-03a4-4c11-a7c4-be8b5a4981e2"/>
+				<textFieldExpression><![CDATA[$F{proveedores_prov_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="0" width="60" height="20" uuid="fdedcde1-15ff-4f78-a2e9-56d47b8a90fb"/>
+				<textFieldExpression><![CDATA[$F{proveedores_prov_correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="0" width="100" height="20" uuid="ecd44f22-a114-40d1-8dd6-151bf8ce42c3"/>
+				<textFieldExpression><![CDATA[$F{ciudades_ciu_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

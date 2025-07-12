@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subdiez" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="27a22a14-c679-4ced-b2a7-5faab9020f17">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="factura" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     detalleventas.`ventas_idventas` AS detalleventas_idventas,
+     detalleventas.`productos_idproductos` AS detalleventas_idproductos,
+     detalleventas.`det_precio` AS detalleventas_det_precio,
+     detalleventas.`det_cantidad` AS detalleventas_det_cantidad,
+     productos.`idproductos` AS productos_idproductos,
+     productos.`pro_iva` AS productos_pro_iva,
+COALESCE(sum(detalleventas.`det_precio`*detalleventas.`det_cantidad`),0)as subtotal
+FROM
+     `productos` productos INNER JOIN `detalleventas` detalleventas ON productos.`idproductos` = detalleventas.`productos_idproductos`
+where detalleventas.`productos_idproductos`=$P{factura} and productos.`pro_iva`='10';]]>
+	</queryString>
+	<field name="detalleventas_idventas" class="java.lang.Integer"/>
+	<field name="detalleventas_idproductos" class="java.lang.Integer"/>
+	<field name="detalleventas_det_precio" class="java.lang.Integer"/>
+	<field name="detalleventas_det_cantidad" class="java.lang.Integer"/>
+	<field name="productos_idproductos" class="java.lang.Integer"/>
+	<field name="productos_pro_iva" class="java.lang.String"/>
+	<field name="subtotal" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d0e73c6c-1d6c-4ce6-883a-9c62856e07a6"/>
+				<textElement>
+					<font fontName="Dubai Medium"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

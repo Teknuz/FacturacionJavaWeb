@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptPagos3" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="980d6666-c9a4-45a0-b298-1442323add7e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pagos.`idpagos` AS pagos_idpagos,
+     pagos.`pag_fecha` AS pagos_pag_fecha,
+     pagos.`pag_estado` AS pagos_pag_estado,
+     pagos.`prov_idproveedores` AS pagos_prov_idproveedores,
+     pagos.`aper_idaperturas` AS pagos_aper_idaperturas
+FROM
+     `pagos` pagos where idpagos=$P{id}]]>
+	</queryString>
+	<field name="pagos_idpagos" class="java.lang.Integer"/>
+	<field name="pagos_pag_fecha" class="java.sql.Date"/>
+	<field name="pagos_pag_estado" class="java.lang.String"/>
+	<field name="pagos_prov_idproveedores" class="java.lang.Integer"/>
+	<field name="pagos_aper_idaperturas" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="183" y="5" width="207" height="74" uuid="ad5fd4ae-d1b6-4e52-b1f1-2f54d9a6a962"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Listado de Pagos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="612245ef-9f3a-4d1f-9d59-0da5b4312e3f"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="100" height="20" uuid="102c9455-b4cb-4570-86a1-eaf430f1deb1"/>
+				<textFieldExpression><![CDATA[$F{pagos_idpagos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="2a3d875d-2399-4485-bcfd-fd236e971420"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="20" width="100" height="20" uuid="27416771-f982-4a7b-8ee1-844eb8f4d0ff"/>
+				<textFieldExpression><![CDATA[$F{pagos_pag_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="17660baa-6453-475a-b1ac-59034aae4cf4"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="20" width="100" height="20" uuid="4222a18f-1380-459f-aefd-0218d74e3745"/>
+				<textFieldExpression><![CDATA[$F{pagos_pag_estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="763aae43-3208-4a16-8a4b-7e22cafed689"/>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="20" width="100" height="20" uuid="c3589f1d-6c01-413d-b1a3-547895a9740f"/>
+				<textFieldExpression><![CDATA[$F{pagos_prov_idproveedores}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="0ca6a537-bd78-40b0-b93d-651bbadd6408"/>
+				<text><![CDATA[Id Apertura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="20" width="100" height="20" uuid="2b5fae78-bfd3-43f0-9004-7c2487bbf900"/>
+				<textFieldExpression><![CDATA[$F{pagos_aper_idaperturas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

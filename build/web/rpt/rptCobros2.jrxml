@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCobros2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62ed5e57-bbb2-4741-b6a5-96b3fbc5bb7b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT c.idcobros, c.cob_fecha, c.cob_estado, CONCAT(cl.cli_nombre, ' ', cl.cli_apellido) AS nombre_completo, c.aperturas_idaperturas
+FROM programacionv2024.cobros c
+INNER JOIN programacionv2024.clientes cl ON c.clientes_idclientes = cl.idclientes;]]>
+	</queryString>
+	<field name="idcobros" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cob_fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cob_estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_completo" class="java.lang.String"/>
+	<field name="aperturas_idaperturas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="138" y="11" width="260" height="53" uuid="128956a6-8d20-403e-bb58-6e52939e2ad0"/>
+				<textElement>
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Listado de Cobros]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="fa6d14ba-1930-4ea0-b200-fe7a25982fcf"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="ad222553-60d5-4e5b-9e36-cf554bdfcbc8"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="100" height="20" uuid="53d42caf-ee55-4efd-913b-d6cfcfa43714"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="2" width="100" height="20" uuid="9c86a0f7-abe0-40e5-b828-0121d883509f"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="2" width="100" height="20" uuid="25ce550c-4008-496e-a7ef-a63779fb1fc1"/>
+				<text><![CDATA[Id Apertura]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="22" width="100" height="20" uuid="2d86bcc6-1926-4b94-b476-e23ba7dc2a48"/>
+				<textFieldExpression><![CDATA[$F{idcobros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="22" width="100" height="20" uuid="ded66f31-5f48-49b8-988f-2e7460c73369"/>
+				<textFieldExpression><![CDATA[$F{cob_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="22" width="115" height="20" uuid="8842293a-4a0a-4fba-bf34-abf5f49f4a5c"/>
+				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="22" width="100" height="20" uuid="65d8ab64-6836-4dc1-bb50-a806c02cdaf6"/>
+				<textFieldExpression><![CDATA[$F{cob_estado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="22" width="112" height="20" uuid="93e41b64-e6cf-4c01-bbb4-1fec779a3591"/>
+				<textFieldExpression><![CDATA[$F{aperturas_idaperturas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
