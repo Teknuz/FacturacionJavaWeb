@@ -1,0 +1,40 @@
+# Archivos compilados
+*.class
+*.war
+*.jar
+
+# Carpetas de NetBeans
+nbproject/private/
+nbbuild/
+build/
+dist/
+
+# Archivos generados por el IDE
+*.iml
+*.iws
+*.ipr
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales de sistema/IDE
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Reportes compilados
+*.jasper
+
+# Archivos ocultos del sistema y backups
+*.orig
+
+# Node modules si usás JS
+node_modules/
+
+# Archivos de rebase/conflicto
+*.rej
+*.conflict
