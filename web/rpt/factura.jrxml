@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5fc0722-71ec-4720-b6be-879e6085b75f">
 	<property name="ireport.zoom" value="1.6105100000000014"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="554"/>
 	<parameter name="factura" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -412,7 +412,7 @@ where ventas.`idventas`=$P{factura}]]>
 				<subreportExpression><![CDATA[".\\subdiez.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="301" y="355" width="63" height="7" uuid="51ed7743-bb77-4397-91c0-e0f73aef0ae8"/>
+				<reportElement x="285" y="356" width="63" height="7" uuid="51ed7743-bb77-4397-91c0-e0f73aef0ae8"/>
 				<subreportParameter name="factura">
 					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -437,12 +437,12 @@ where ventas.`idventas`=$P{factura}]]>
 			</subreport>
 			<elementGroup/>
 			<subreport>
-				<reportElement x="6" y="50" width="549" height="90" uuid="69db753d-98ff-4df2-b248-977ee333696e"/>
+				<reportElement x="0" y="40" width="106" height="45" uuid="be9f3c1a-ad02-419d-91b4-1d2339512b1f"/>
 				<subreportParameter name="factura">
 					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\JoseG\\Downloads\\EF_JG_Peluqueria_MarcosM_JoseG\\EF_JG_Peluqueria_MarcosM_JoseG\\JG_peluqueria\\web\\rpt\\detalle2.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["C:\\Users\\JoseG\\Downloads\\FacturacionJavaWeb-modelo_original (1)\\FacturacionJavaWeb-modelo_original\\web\\rpt\\detalle2.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
