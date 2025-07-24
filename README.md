@@ -59,10 +59,10 @@ Este es un sistema de facturación desarrollado con Java EE, JSP, Servlets, MySQ
 
 3. **Crea la base de datos**
 -En MySQL, crea una base de datos llamada programacionv2024.
--Importa el archivo programacionv2024.sql ubicado en la carpeta /bd.
+-Importa el archivo programacionv2024.sql ubicado en la raiz del directoio.
 
 4.**Configura la conexión**
--Edita la clase Conexion.java ubicada en src/conexion/Conexion.java.
+-Edita la clase Conexion.java ubicada en src/utilidades/Conexion.java.
 -Asegúrate de ingresar correctamente el usuario, contraseña y nombre de tu base de datos.
 
 5.**Despliega en Apache Tomcat**
@@ -73,8 +73,6 @@ http://localhost:8080/FacturacionJavaWeb/index.jsp
 
 
 FacturacionJavaWeb/
-├── bd/
-│   └── programacionv2024.sql
 ├── src/
 │   ├── controlador/
 │   ├── modelo/
