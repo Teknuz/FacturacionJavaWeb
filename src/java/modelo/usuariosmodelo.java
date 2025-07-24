@@ -18,6 +18,16 @@ public class usuariosmodelo {
     Statement st;
     ResultSet rs;
     private String Personalnombre;
+    private String CantidadUsuarios;
+
+    public String getCantidadUsuarios() {
+        return CantidadUsuarios;
+    }
+
+    public void setCantidadUsuarios(String CantidadUsuarios) {
+        this.CantidadUsuarios = CantidadUsuarios;
+    }
+    
 
     public String getPersonalnombre() {
         return Personalnombre;
@@ -252,4 +262,22 @@ public class usuariosmodelo {
     }
     return ultimoNumero;
 }
+   public int SumarUsuarios(){
+       int totalusu=0;
+       String sqlContarUsuarios="Select count(idusuarios) as totalusu from usuarios";
+       try{
+           st = utilidades.conexion.sta(st);
+           rs = st.executeQuery(sqlContarUsuarios);
+           
+           if (rs.next()){
+           totalusu = rs.getInt("totalusu");
+           }
+           rs.close();
+           st.close();
+       } catch (SQLException ex){
+       Logger.getLogger(usuariosmodelo.class.getName()).log(Level.SEVERE,null,ex);
+       }
+       return totalusu;
+   }
+   
 }

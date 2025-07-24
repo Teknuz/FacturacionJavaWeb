@@ -1,14 +1,13 @@
-<%@page import="modelo.productosmodelo"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="java.util.List"%>
-<%@page import="modelo.clientemodelo"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="modelo.facturaventamodelo" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>PRODUCTOS</title>
-    <!-- Incluir Bootstrap -->
+    <title>Formulario Facturacion</title>
+    <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
         <style>
@@ -31,7 +30,7 @@
             }
         </style>
 </head>
-      <header>
+   <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
             <a class="navbar-brand" href="menuprincipal.jsp">
                 <img class="logo" src="img/logo.png"  width="50px" height="50px">
@@ -110,84 +109,59 @@
         </nav>
     </header>
 <body>
-    <div class="container mt-4">
-       
     
-            <!--titulo de la pagina clientes -->
-            <h1>FORMULARIO PRODUCTOS</h1>
-            <!-- SE CREA LA ESTRUCTURA DEL FORMULARIO CLIENTES -->
-            <!-- se agrega un hiperviculo para abrir una nueva página para agregar cleintes a la bd -->
-            <a href="vistas/guardar_productos.jsp" class="btn btn-primary mb-2">GUARDAR PRODUCTOS</a>
-            <form action="productoscontrolador" method="post">
-                <button type="submit" class="btn btn-success mb-2" name="accion" value="informe">IMPRIMIR</button>
-            </form>
-
-            <table class="table table-striped">
-                <thead >
-                    <tr>
-                       
-                        <th scope="col">CÓDIGO</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">COSTO</th>
-                        <th scope="col">PRECIO</th>
-                        <th scope="col">STOCK</th>
-                        <th scope="col">STOCK MINIMO</th>
-                        <th scope="col">PROVEEDOR ID</th>
-                        <th scope="col">PROVEEDOR</th>
-                        <th scope="col">IVA</th>
-                        <th scope="col">CATEGORIA</th>
-                        <th scope="col">ACCION</th><!-- aqui iran dos botones modificar y eliminar -->
-                    </tr>
-                </thead>
-                <% 
-                    //se crea la instancia para la comunicacion de la pagina con el modelo
-                    productosmodelo modelo = new productosmodelo();
-                    //se crea una lista para obtemer los valores del mertodo listar
-                    //como listar retorna una lista por eso una lista lo debe recibir
-                    List<productosmodelo> list = modelo.listar();
-                    // se crea un iterador para que pueda ser recorrido por un bucle
-                    Iterator<productosmodelo> iter = list.iterator();
-                    //se crea un nuevo objeto denominado m vacio que contendrá cada fina de por separado
-                    productosmodelo m = null;
-                    //comienza el bucle desde la posicion 1
-                    while (iter.hasNext()) {
-                        //se obtiene el primer registro
-                        m = iter.next();
-                %>
-                <tbody>
-                    <tr>
-                        
-                        <td><%= m.getCodigo()%></td>
-                        <td><%= m.getNombre()%></td>
-                        <td><%= m.getCosto()%></td>
-                        <td><%= m.getPrecio()%></td>
-                        <td><%= m.getStock()%></td>
-                        <td><%= m.getStockmin()%></td>
-                        <td><%= m.getProveedorid()%></td>
-                         <td><%= m.getProveedornombre()%></td>
-                        <td><%= m.getIva()%></td>
-                        <td><%= m.getCategoria()%></td>
-                    <td>
-                          
-                             <form action="productoscontrolador" method="post" style="display: inline;">
-                                 <a class="btn btn-warning btn-sm" href="vistas/modificar_productos.jsp?id=<%= m.getCodigo()%>">EDITAR</a>
-                                <input type="hidden" name="accion" value="delete">
-                                <input type="hidden" name="id" value="<%= m.getCodigo()%>">
-                                <button type="submit" class="btn btn-danger btn-sm" name="eliminar">ELIMINAR</button>
-                        </form>
-                    </td>
-                   </tr>
-                    <% } %>
-                </tbody>
-            </table>
-    </div>
-    <!-- Scripts de Bootstrap (jQuery y Popper.js son requeridos para Bootstrap) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <main class="container mt-5">
+        <div id="inicio">
+            <div class="bloque-inicio2">
+                <h1 class="mb-4">Formulario Facturacion Ventas</h1>
+                <form action="facturaventacontrolador" method="POST">
+                    <button type="submit" class="btn btn-primary me-3" name="accion" value="add">Agregar nueva factura</button>
+                    
+                    <table class="table mt-4">
+                        <thead>
+                            <tr>
+                                <th>N</th>
+                                <th>Fecha</th>
+                                <th>Condicion</th>
+                                <th>Estado</th>
+                                <th>Usuario</th>
+                                <th>Apertura</th>
+                                <th>Clientes</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% 
+                                facturaventamodelo modelo = new facturaventamodelo();
+                                List<facturaventamodelo> list = modelo.listarfacturas();
+                                Iterator<facturaventamodelo> iter = list.iterator();
+                                facturaventamodelo m = null;
+                                while (iter.hasNext()) {
+                                    m = iter.next();
+                            %>
+                            <tr>
+                                <td><%= m.getIdfacturacion()%></td>
+                                <td><%= m.getFecha()%></td>
+                                <td><%= m.getCondicion()%></td>
+                                <td><%= m.getEstado()%></td>
+                                <td><%= m.getIdusuarios()%></td>
+                                <td><%= m.getIdapertura()%></td>
+                                <td><%= m.getCliente()%></td>
+                                <td>
+                                       <input type="hidden" name="accion" value="imprimir">
+                                    <button type="submit" class="btn btn-info" name="factura" value="<%= m.getIdfacturacion()%>">IMPRIMIR</button>
+                                </td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Bootstrap JS (Optional) -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-<footer>
-  
-    
-</footer>
 </html>

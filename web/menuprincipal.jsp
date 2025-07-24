@@ -79,6 +79,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                             <a class="dropdown-item" href="facturacompra.jsp">Registro de Compras</a>
                             <a class="dropdown-item" href="facturaventa.jsp">Generacion de Ventas</a>
+                            <a class="dropdown-item" href="./vistas/guardarfactura_1.jsp">Punto de Venta</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -94,6 +95,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Inventario</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Plantilla
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                            <a class="dropdown-item" href="puntoventa.jsp">Punto de Venta</a>
+                            <a class="dropdown-item" href="indexplantilla.jsp">Plantilla JSP</a>
+                        </div>
                     </li>
                 </ul>
                 <% HttpSession sesion = request.getSession();

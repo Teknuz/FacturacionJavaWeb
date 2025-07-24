@@ -16,8 +16,17 @@ public class productosmodelo {
     private String codigo, nombre, apellido, ci, mensaje, telefono, ciudad,costo,precio,stock,stockmin,proveedornombre,proveedorid;
     private String minimo,iva;
     private String categoria;
+    private String CantidadProductos;
     Statement st;
     ResultSet rs;
+
+    public String getCantidadProductos() {
+        return CantidadProductos;
+    }
+
+    public void setCantidadProductos(String CantidadProductos) {
+        this.CantidadProductos = CantidadProductos;
+    }
 
     public String getCategoria() {
         return categoria;
@@ -169,7 +178,7 @@ public class productosmodelo {
 "       p.proveedores_idproveedores,pr.prov_nombre, p.pro_iva, p.pro_categoria, p.pro_min\n" +
 "FROM productos p\n" +
 "JOIN Proveedores pr ON p.proveedores_idproveedores = pr.idproveedores;";
-
+        
         try {
             //se abre y se prepara la conexion
             st = utilidades.conexion.sta(st);
@@ -180,6 +189,7 @@ public class productosmodelo {
                 //se realiza la instancia de la misma clase para contener los datos extraidos de la consulta
                 productosmodelo modelo = new productosmodelo();
                 //segun lo encontrado se va iterando y obteniendo los valores de cada fila su codigo, nombre, apellido y ruc
+               
                 modelo.setCodigo(rs.getString("idproductos"));
                 modelo.setNombre(rs.getString("pro_nombre"));
                 modelo.setCosto(rs.getString("pro_costo"));
@@ -395,6 +405,24 @@ public class productosmodelo {
             Logger.getLogger(productosmodelo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+public int contarProductos() {
+    int total = 0;
+    String sql = "SELECT COUNT(idproductos) AS total FROM productos";
+    
+    try {
+        st = utilidades.conexion.sta(st);
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            total = rs.getInt("total");
+        }
+        rs.close();
+        st.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(productosmodelo.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    return total;
+}
 
     public void eliminar(String id) {
         String sql = "delete from productos where idproductos='" + id + "'";
@@ -406,7 +434,7 @@ public class productosmodelo {
         } catch (SQLException ex) {
             Logger.getLogger(productosmodelo.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
       public String obtenerUltimoNumeroFacturaPago() {
     String sql = "SELECT MAX(idproductos) as ultimoNumero FROM productos";
