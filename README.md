@@ -19,22 +19,22 @@ Este es un sistema de facturación desarrollado con Java EE, JSP, Servlets, MySQ
 ## 🖼 Capturas de pantalla
 
 ### Inicio de sesión
-![Login](webpages/assets/img/login.png)
+![Login](web/assets/login.png)
 
 ### Panel principal / Dashboard
-![Dashboard](assets/img/dashboard.png)
+![Dashboard](web/assets/dashboard.png)
 
 ### Gestión de productos
-![Productos](assets/img/productos.png)
+![Productos](web/assets/productos.png)
 
 ### Formulario de venta
-![Venta](assets/img/venta.png)
+![Venta](web/assets/venta.png)
 
 ### Modal de clientes
-![Clientes Modal](assets/img/clientes-modal.png)
+![Clientes Modal](web/assets/clientes-modal.png)
 
 ### Factura generada
-![Factura](assets/img/factura.png)
+![Factura](web/assets/factura.png)
 
 ---
 
