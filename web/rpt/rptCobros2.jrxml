@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCobros2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62ed5e57-bbb2-4741-b6a5-96b3fbc5bb7b">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT c.idcobros, c.cob_fecha, c.cob_estado, CONCAT(cl.cli_nombre, ' ', cl.cli_apellido) AS nombre_completo, c.aperturas_idaperturas
-FROM programacionv2024.cobros c
-INNER JOIN programacionv2024.clientes cl ON c.clientes_idclientes = cl.idclientes;]]>
+		<![CDATA[SELECT
+    v.idventas AS id_venta,
+    v.ven_fecha AS fecha_venta,
+    v.ven_estado AS estado_venta,
+    CONCAT(cl.cli_nombre, ' ', cl.cli_apellido) AS nombre_cliente,
+    u.usu_nombre AS nombre_usuario,
+    dc.monto AS monto_cobrado
+FROM
+    cobros c
+INNER JOIN clientes cl ON c.clientes_idclientes = cl.idclientes
+INNER JOIN detallecobros dc ON c.idcobros = dc.cobros_idcobros
+INNER JOIN ventas v ON dc.ventas_idventas = v.idventas
+INNER JOIN usuarios u ON v.usuarios_idusuarios = u.idusuarios
+]]>
 	</queryString>
-	<field name="idcobros" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cob_fecha" class="java.sql.Date">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="cob_estado" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nombre_completo" class="java.lang.String"/>
-	<field name="aperturas_idaperturas" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="id_venta" class="java.lang.Integer"/>
+	<field name="fecha_venta" class="java.sql.Date"/>
+	<field name="estado_venta" class="java.lang.String"/>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<field name="nombre_usuario" class="java.lang.String"/>
+	<field name="monto_cobrado" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="78" splitType="Stretch">
 			<staticText>
 				<reportElement x="138" y="11" width="260" height="53" uuid="128956a6-8d20-403e-bb58-6e52939e2ad0"/>
 				<textElement>
@@ -36,46 +40,54 @@ INNER JOIN programacionv2024.clientes cl ON c.clientes_idclientes = cl.idcliente
 		</band>
 	</title>
 	<detail>
-		<band height="45" splitType="Stretch">
+		<band height="44" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="2" width="100" height="20" uuid="fa6d14ba-1930-4ea0-b200-fe7a25982fcf"/>
-				<text><![CDATA[ID]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="2" width="100" height="20" uuid="ad222553-60d5-4e5b-9e36-cf554bdfcbc8"/>
-				<text><![CDATA[Fecha]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="200" y="2" width="100" height="20" uuid="53d42caf-ee55-4efd-913b-d6cfcfa43714"/>
+				<reportElement x="173" y="2" width="100" height="20" uuid="53d42caf-ee55-4efd-913b-d6cfcfa43714"/>
 				<text><![CDATA[Estado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="2" width="100" height="20" uuid="9c86a0f7-abe0-40e5-b828-0121d883509f"/>
+				<reportElement x="273" y="2" width="100" height="20" uuid="9c86a0f7-abe0-40e5-b828-0121d883509f"/>
 				<text><![CDATA[Cliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="415" y="2" width="100" height="20" uuid="25ce550c-4008-496e-a7ef-a63779fb1fc1"/>
-				<text><![CDATA[Id Apertura]]></text>
+				<reportElement x="388" y="2" width="100" height="20" uuid="a920642c-6929-499b-97ff-f5a6fd73d249"/>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="2" width="57" height="20" uuid="6666fdb6-ff7c-45c9-91d5-c34113b929d1"/>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="54ff750e-4a3a-42bb-ad0f-1f0b231c3bce"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="5" width="73" height="20" uuid="bcdece6d-b9f5-475d-97e0-ca67ea2af9b0"/>
+				<text><![CDATA[Fecha]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="22" width="100" height="20" uuid="2d86bcc6-1926-4b94-b476-e23ba7dc2a48"/>
-				<textFieldExpression><![CDATA[$F{idcobros}]]></textFieldExpression>
+				<reportElement x="488" y="24" width="67" height="20" uuid="0cb44b41-64ff-41d5-bd19-57d117eee449"/>
+				<textFieldExpression><![CDATA[$F{monto_cobrado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="22" width="100" height="20" uuid="ded66f31-5f48-49b8-988f-2e7460c73369"/>
-				<textFieldExpression><![CDATA[$F{cob_fecha}]]></textFieldExpression>
+				<reportElement x="388" y="22" width="100" height="20" uuid="c6772c7a-67ee-4603-a955-d315a19ba75d"/>
+				<textFieldExpression><![CDATA[$F{nombre_usuario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="22" width="115" height="20" uuid="8842293a-4a0a-4fba-bf34-abf5f49f4a5c"/>
-				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+				<reportElement x="273" y="22" width="100" height="20" uuid="3a554d2c-c847-4a72-88e3-91ba24558dd4"/>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="200" y="22" width="100" height="20" uuid="65d8ab64-6836-4dc1-bb50-a806c02cdaf6"/>
-				<textFieldExpression><![CDATA[$F{cob_estado}]]></textFieldExpression>
+				<reportElement x="173" y="22" width="100" height="20" uuid="a182d4e8-7209-44db-a8e0-a746ab358430"/>
+				<textFieldExpression><![CDATA[$F{estado_venta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="415" y="22" width="112" height="20" uuid="93e41b64-e6cf-4c01-bbb4-1fec779a3591"/>
-				<textFieldExpression><![CDATA[$F{aperturas_idaperturas}]]></textFieldExpression>
+				<reportElement x="100" y="22" width="73" height="20" uuid="32e33eee-857c-4107-a3bf-c6a03849c9d5"/>
+				<textFieldExpression><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="22" width="100" height="20" uuid="ecc8f3d3-9637-4fd7-81bc-2a65f5eb8dfb"/>
+				<textFieldExpression><![CDATA[$F{id_venta}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -38,6 +38,19 @@
             
             background-color: #5f675e
         }
+        .texto{
+            text-align: center;
+        }
+        .ubicacion{
+            display: flex;
+            justify-content: center;
+        }
+        .txtmonto{
+            justify-content: center;
+            width:40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
        <% HttpSession sesion = request.getSession();
@@ -49,9 +62,9 @@
  String usunombre = (String)sesion.getAttribute("usu_nombre");
  %>
 <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
             <a class="navbar-brand" href="menuprincipal.jsp">
-                <img class="logo" src="img/logo.png" alt="logo"  width="50px" height="50px">
+                <img class="logo" src="img/logo.png"  width="50px" height="50px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -87,34 +100,30 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
                             <a class="dropdown-item" href="aperturacaja2.jsp">Abrir caja</a>
-                            <a class="dropdown-item" href="facturaventa.jsp">Cobrar</a>
-                            <a class="dropdown-item" href="#">Pagar</a>
+                            <a class="dropdown-item" href="cobros.jsp">Cobrar</a>
+                            <a class="dropdown-item" href="pagos.jsp">Pagar</a>
                             <a class="dropdown-item" href="cerrar.jsp">Cerrar caja</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inventario</a>
+                        <a class="nav-link" href="#">Inventario(Aun no disponible)</a>
                     </li>
                 </ul>
-          
-       
+    
                 <ul class="navbar-nav">
-                    <!-- Dropdown con imagen de usuario -->
+                 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="img/per.png" alt="per" width="30" height="30" style="border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
-                            <span class="dropdown-header"><%= usunombre %></span>
-                             
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="perfil.jsp">Perfil</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
+                        <span class="dropdown-header"><%= usunombre %></span>
+
                             <div class="dropdown-divider"></div>
                            <a class="dropdown-item"   href="cerrarsesion" type="submit" >Salir</a>
                         </div>
                     </li>
-                    
+
                 </ul>
             </div>
         </nav>
@@ -123,12 +132,15 @@
 <main>
     <div class="container">
         <form action="abrircajacontrolador" method="post">
-            <div class="form-group">
+            <div class="form-group texto">
                 <input type="hidden" name="lblcodigo" value="<%= sesion.getAttribute("idusuarios")%>">
                 <label for="txtmonto">Ingrese un monto</label>
-                <input type="number" class="form-control" id="txtmonto" name="txtmonto">
+                <input type="number" class="form-control txtmonto" id="txtmonto" name="txtmonto">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="mostrarModal()" data-toggle="modal" data-target="#miModal">Abrir Caja</button>
+                <div class="ubicacion">
+                    <button type="submit" class="btn btn-primary" onclick="mostrarModal()" data-toggle="modal" data-target="#miModal">Abrir Caja</button>
+                </div>
+            
          
            
 

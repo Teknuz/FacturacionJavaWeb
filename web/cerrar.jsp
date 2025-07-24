@@ -38,6 +38,19 @@
 
                 background-color: #5f675e
             }
+              .texto{
+            text-align: center;
+        }
+        .ubicacion{
+            display: flex;
+            justify-content: center;
+        }
+        .txtmonto{
+            justify-content: center;
+            width:40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
         </style>
     </head>
     <header>
@@ -79,16 +92,16 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
                             <a class="dropdown-item" href="aperturacaja2.jsp">Abrir caja</a>
-                            <a class="dropdown-item" href="facturaventa.jsp">Cobrar</a>
-                            <a class="dropdown-item" href="#">Pagar</a>
+                            <a class="dropdown-item" href="cobros.jsp">Cobrar</a>
+                            <a class="dropdown-item" href="pagos.jsp">Pagar</a>
                             <a class="dropdown-item" href="cerrar.jsp">Cerrar caja</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inventario</a>
+                        <a class="nav-link" href="#">Inventario(Aun no disponible)</a>
                     </li>
                 </ul>
-  
+    
                 <ul class="navbar-nav">
                  
                     <li class="nav-item dropdown">
@@ -96,12 +109,8 @@
                             <img src="img/per.png" alt="per" width="30" height="30" style="border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
-  <span class="dropdown-header"><%= usunombre %></span>
+                        <span class="dropdown-header"><%= usunombre %></span>
 
-                            <div class="dropdown-divider"></div>
-                          
-                            <a class="dropdown-item" href="perfil.jsp">Perfil</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
                             <div class="dropdown-divider"></div>
                            <a class="dropdown-item"   href="cerrarsesion" type="submit" >Salir</a>
                         </div>
@@ -124,12 +133,18 @@
         %>
     </body>
     <main>
+         <div class="container">
         <form action="abrircajacontrolador" method="post">
-            <input type="hidden" name="lblcodigo" value="<%= sesion.getAttribute("idusuarios")%>">
-            <label>Ingrese un monto</label>
-            <input type="number" name="txtmontocierre">
+              <div class="form-group texto">  
+                   <input type="hidden" name="lblcodigo" value="<%= sesion.getAttribute("idusuarios")%>">
+                   <label>Ingrese un monto</label><br>
+            <input type="number"  class="form-control txtmonto"  name="txtmontocierre">
+              </div>
+            
+              <div class="ubicacion">
             <button type="submit" class="btn btn-primary" onclick="mostrarModal()">Cerrar Caja</button>
-
+              </div>
+         </div>
             <div id="miModal" class="modal">
                 <div class="modal-dialog">
                     <div class="modal-content">

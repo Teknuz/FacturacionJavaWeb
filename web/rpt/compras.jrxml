@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="compras" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81f75f9b-532e-4c58-ab70-fb20b6d64851">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     compras.`idcompras` AS compras_idcompras,
+     compras.`com_fecha` AS compras_com_fecha,
+     compras.`com_condicion` AS compras_com_condicion,
+     compras.`com_estado` AS compras_com_estado,
+     compras.`usuarios_idusuarios` AS compras_usuarios_idusuarios,
+     compras.`proveedores_idproveedores` AS compras_proveedores_idproveedores,
+     compras.`aperturas_idaperturas` AS compras_aperturas_idaperturas,
+     detallecompras.`compras_idcompras` AS detallecompras_compras_idcompras,
+     detallecompras.`productos_idproductos` AS detallecompras_productos_idproductos,
+     detallecompras.`det_precio` AS detallecompras_det_precio,
+     detallecompras.`det_cantidad` AS detallecompras_det_cantidad,COALESCE(sum(detallecompras.`det_precio`*detallecompras.`det_cantidad`),0) as total,
+     usuarios.`idusuarios` AS usuarios_idusuarios,
+     usuarios.`usu_nombre` AS usuarios_usu_nombre,
+     usuarios.`usu_clave` AS usuarios_usu_clave,
+     usuarios.`usu_tipo` AS usuarios_usu_tipo,
+     usuarios.`usu_estado` AS usuarios_usu_estado,
+     usuarios.`personales_idpersonales` AS usuarios_personales_idpersonales,
+     productos.`idproductos` AS productos_idproductos,
+     productos.`pro_nombre` AS productos_pro_nombre,
+     productos.`pro_costo` AS productos_pro_costo,
+     productos.`pro_precio` AS productos_pro_precio,
+     productos.`pro_stock` AS productos_pro_stock,
+     productos.`pro_min` AS productos_pro_min,
+     productos.`proveedores_idproveedores` AS productos_proveedores_idproveedores,
+     productos.`pro_iva` AS productos_pro_iva,
+     productos.`pro_categoria` AS productos_pro_categoria,
+     proveedores.`idproveedores` AS proveedores_idproveedores,
+     proveedores.`prov_nombre` AS proveedores_prov_nombre,
+     proveedores.`prov_ruc` AS proveedores_prov_ruc,
+     proveedores.`prov_telefono` AS proveedores_prov_telefono,
+     proveedores.`prov_correo` AS proveedores_prov_correo,
+     proveedores.`ciudades_idciudades` AS proveedores_ciudades_idciudades
+
+
+FROM
+     `compras` compras INNER JOIN `detallecompras` detallecompras ON compras.`idcompras` = detallecompras.`compras_idcompras`
+     INNER JOIN `usuarios` usuarios ON compras.`usuarios_idusuarios` = usuarios.`idusuarios`
+     INNER JOIN `proveedores` proveedores ON compras.`proveedores_idproveedores` = proveedores.`idproveedores`
+     INNER JOIN `productos` productos ON proveedores.`idproveedores` = productos.`proveedores_idproveedores`
+     AND detallecompras.`productos_idproductos` = productos.`idproductos`
+WHERE
+     idcompras = $P{id}]]>
+	</queryString>
+	<field name="compras_idcompras" class="java.lang.Integer"/>
+	<field name="compras_com_fecha" class="java.sql.Date"/>
+	<field name="compras_com_condicion" class="java.lang.String"/>
+	<field name="compras_com_estado" class="java.lang.String"/>
+	<field name="compras_usuarios_idusuarios" class="java.lang.Integer"/>
+	<field name="compras_proveedores_idproveedores" class="java.lang.Integer"/>
+	<field name="compras_aperturas_idaperturas" class="java.lang.Integer"/>
+	<field name="detallecompras_compras_idcompras" class="java.lang.Integer"/>
+	<field name="detallecompras_productos_idproductos" class="java.lang.Integer"/>
+	<field name="detallecompras_det_precio" class="java.lang.Integer"/>
+	<field name="detallecompras_det_cantidad" class="java.lang.Integer"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<field name="usuarios_idusuarios" class="java.lang.Integer"/>
+	<field name="usuarios_usu_nombre" class="java.lang.String"/>
+	<field name="usuarios_usu_clave" class="java.lang.String"/>
+	<field name="usuarios_usu_tipo" class="java.lang.String"/>
+	<field name="usuarios_usu_estado" class="java.lang.String"/>
+	<field name="usuarios_personales_idpersonales" class="java.lang.Integer"/>
+	<field name="productos_idproductos" class="java.lang.Integer"/>
+	<field name="productos_pro_nombre" class="java.lang.String"/>
+	<field name="productos_pro_costo" class="java.lang.Integer"/>
+	<field name="productos_pro_precio" class="java.lang.Integer"/>
+	<field name="productos_pro_stock" class="java.lang.Integer"/>
+	<field name="productos_pro_min" class="java.lang.Integer"/>
+	<field name="productos_proveedores_idproveedores" class="java.lang.Integer"/>
+	<field name="productos_pro_iva" class="java.lang.String"/>
+	<field name="productos_pro_categoria" class="java.lang.String"/>
+	<field name="proveedores_idproveedores" class="java.lang.Integer"/>
+	<field name="proveedores_prov_nombre" class="java.lang.String"/>
+	<field name="proveedores_prov_ruc" class="java.lang.String"/>
+	<field name="proveedores_prov_telefono" class="java.lang.String"/>
+	<field name="proveedores_prov_correo" class="java.lang.String"/>
+	<field name="proveedores_ciudades_idciudades" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="16" width="100" height="20" uuid="0a024d5c-9258-4fab-8b23-1ca039828009"/>
+				<text><![CDATA[Listado de Compras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="16" width="60" height="20" uuid="0f2ef34c-dbe7-4ffb-8ea9-7ce700634383"/>
+				<text><![CDATA[Factura N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="459" y="16" width="76" height="20" uuid="c98405ca-1dd1-4a93-875b-e45ee29525e6"/>
+				<textFieldExpression><![CDATA[$F{compras_idcompras}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement x="47" y="0" width="72" height="20" uuid="ab5c9f65-19b0-47fd-a39d-e64e67a800d1"/>
+				<textFieldExpression><![CDATA[$F{compras_com_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="2946d30d-faa6-4dd2-b0f5-f50e6fc45e4b"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="193" y="0" width="100" height="20" uuid="0580823b-5047-46d5-8bea-48705c50a5b8"/>
+				<textFieldExpression><![CDATA[$F{compras_com_condicion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="130" y="0" width="100" height="20" uuid="cf84388d-db7e-4771-b718-a848ac4498ca"/>
+				<text><![CDATA[Condicion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="0" width="100" height="20" uuid="95edc17c-082c-4039-a910-51ceac86de45"/>
+				<textFieldExpression><![CDATA[$F{compras_com_estado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="259" y="0" width="100" height="20" uuid="659a6092-a1ab-42d6-87bd-919d96aac830"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="f6499fbc-47a4-42d4-978f-99d564ecfb70"/>
+				<textFieldExpression><![CDATA[$F{compras_usuarios_idusuarios}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="392" y="0" width="63" height="20" uuid="6426f6a9-102d-4404-81e0-724ac145270c"/>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="47" y="29" width="53" height="20" uuid="156467bb-6171-448a-8ba4-4a841a0035e3"/>
+				<textFieldExpression><![CDATA[$F{compras_proveedores_idproveedores}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="29" width="100" height="20" uuid="0494a0e1-b028-4700-ba34-9f022b0521ed"/>
+				<text><![CDATA[Prov.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="29" width="100" height="20" uuid="1c523cf3-184a-4fd0-a4cf-4b278d43b7a8"/>
+				<textFieldExpression><![CDATA[$F{proveedores_prov_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="2adeffc1-41aa-4546-86e7-91b7dc1732d1"/>
+				<text><![CDATA[ID Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="2cdd6091-cfca-4534-8e90-675d6cd86ff6"/>
+				<text><![CDATA[ID Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="20" uuid="0430ff5b-b2b1-4571-af5c-c5a4f45a5fff"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="89a64da2-de32-4c51-88df-27cc4f7ea49a"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="100" height="20" uuid="e90016ad-809c-4233-a5a1-23e2d17f77cf"/>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="0b585f2d-ba48-43d1-a119-b5378ec26ea7"/>
+				<textFieldExpression><![CDATA[$F{detallecompras_compras_idcompras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="38f94c37-3d83-4ec7-8a28-138391dcbf95"/>
+				<textFieldExpression><![CDATA[$F{detallecompras_productos_idproductos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="ee3a3aab-7822-4a17-a833-597dd3c0a670"/>
+				<textFieldExpression><![CDATA[$F{detallecompras_det_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="ce2a1470-b5aa-4a05-8e94-849d31dc8b2d"/>
+				<textFieldExpression><![CDATA[$F{detallecompras_det_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="0" width="100" height="20" uuid="fdb7e75f-d972-400f-99ac-79c6617ac04c"/>
+				<textFieldExpression><![CDATA[$F{productos_pro_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="230" y="3" width="100" height="20" uuid="632cbf7c-a5a0-4bbe-a5c0-72a371772251"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="187" y="3" width="100" height="20" uuid="a750a202-2302-45e0-bbf7-2307a8d9b8cd"/>
+				<text><![CDATA[total]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

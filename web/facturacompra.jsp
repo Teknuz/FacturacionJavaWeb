@@ -31,7 +31,7 @@
         </style>
 </head>
    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
             <a class="navbar-brand" href="menuprincipal.jsp">
                 <img class="logo" src="img/logo.png"  width="50px" height="50px">
             </a>
@@ -75,7 +75,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inventario</a>
+                        <a class="nav-link" href="#">Inventario(Aun no disponible)</a>
                     </li>
                 </ul>
                 <% HttpSession sesion = request.getSession();
@@ -93,12 +93,8 @@
                             <img src="img/per.png" alt="per" width="30" height="30" style="border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
-  <span class="dropdown-header"><%= usunombre %></span>
+                        <span class="dropdown-header"><%= usunombre %></span>
 
-                            <div class="dropdown-divider"></div>
-                          
-                            <a class="dropdown-item" href="perfil.jsp">Perfil</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
                             <div class="dropdown-divider"></div>
                            <a class="dropdown-item"   href="cerrarsesion" type="submit" >Salir</a>
                         </div>
@@ -148,7 +144,8 @@
                                 <td><%= m.getIdapertura()%></td>
                                 <td><%= m.getProveedor()%></td>
                                 <td>
-                                    <button type="submit" class="btn btn-info" name="imprimir" value="<%= m.getIdfacturacion()%>">IMPRIMIR</button>
+                                     <input type="hidden" name="accion" value="imprimir">
+                                    <button type="submit" class="btn btn-info" name="factura" value="<%= m.getIdfacturacion()%>">IMPRIMIR</button>
                                 </td>
                             </tr>
                             <%}%>

@@ -79,7 +79,6 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                             <a class="dropdown-item" href="facturacompra.jsp">Registro de Compras</a>
                             <a class="dropdown-item" href="facturaventa.jsp">Generacion de Ventas</a>
-                            <a class="dropdown-item" href="./vistas/guardarfactura_1.jsp">Punto de Venta</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -94,16 +93,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inventario</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Plantilla
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <a class="dropdown-item" href="puntoventa.jsp">Punto de Venta</a>
-                            <a class="dropdown-item" href="indexplantilla.jsp">Plantilla JSP</a>
-                        </div>
+                        <a class="nav-link" href="#">Inventario(Aun no disponible)</a>
                     </li>
                 </ul>
                 <% HttpSession sesion = request.getSession();
@@ -123,10 +113,6 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
                         <span class="dropdown-header"><%= usunombre %></span>
 
-                            <div class="dropdown-divider"></div>
-                          
-                            <a class="dropdown-item" href="perfil.jsp">Perfil</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
                             <div class="dropdown-divider"></div>
                            <a class="dropdown-item"   href="cerrarsesion" type="submit" >Salir</a>
                         </div>

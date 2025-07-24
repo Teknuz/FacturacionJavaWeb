@@ -75,7 +75,7 @@ public class facturacompracontrolador extends HttpServlet {
             throws ServletException, IOException {
        String acceso = "";
         String action = request.getParameter("accion");
-        String print = request.getParameter("imprimir");
+        String facturaId = request.getParameter("factura");
         if (action != null) {
             if (action.equalsIgnoreCase("home")) {
                 acceso = "index.jsp";
@@ -112,8 +112,9 @@ public class facturacompracontrolador extends HttpServlet {
                         }
                         acceso = "facturacompra.jsp";
                     } else {
-                        if (action.equalsIgnoreCase("imprimirfactura")) {
-                            request.setAttribute("param", request.getParameter("txtnumero"));
+                        if (action.equalsIgnoreCase("imprimir")) {
+                            facturaId = request.getParameter("factura");
+                            request.setAttribute("factura", facturaId);
                             acceso = "reportes/rptfactura.jsp";
                         }
                     }

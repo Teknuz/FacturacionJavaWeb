@@ -112,7 +112,7 @@ public class cobrocontrolador extends HttpServlet {
                 }
                 return;
             } else if (action.equalsIgnoreCase("informe")) {
-                acceso = "reportes/rptcobros.jsp";
+                acceso = "reportes/rptCobros.jsp";
             }
         }
 

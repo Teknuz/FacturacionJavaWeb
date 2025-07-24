@@ -33,7 +33,7 @@
 
     </head>
           <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
             <a class="navbar-brand" href="menuprincipal.jsp">
                 <img class="logo" src="img/logo.png"  width="50px" height="50px">
             </a>
@@ -77,10 +77,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inventario</a>
+                        <a class="nav-link" href="#">Inventario(Aun no disponible)</a>
                     </li>
                 </ul>
-                <% HttpSession sesion = request.getSession();
+    
+                <ul class="navbar-nav">
+                                <% HttpSession sesion = request.getSession();
        if(sesion.getAttribute("sesion") == null){
            response.sendRedirect("index.jsp");
        }
@@ -88,19 +90,14 @@
                 <%
  String usunombre = (String)sesion.getAttribute("usu_nombre");
  %>
-                <ul class="navbar-nav">
                  
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="img/per.png" alt="per" width="30" height="30" style="border-radius: 50%;">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
-  <span class="dropdown-header"><%= usunombre %></span>
+                        <span class="dropdown-header"><%= usunombre %></span>
 
-                            <div class="dropdown-divider"></div>
-                          
-                            <a class="dropdown-item" href="perfil.jsp">Perfil</a>
-                            <a class="dropdown-item" href="#">Configuración</a>
                             <div class="dropdown-divider"></div>
                            <a class="dropdown-item"   href="cerrarsesion" type="submit" >Salir</a>
                         </div>
