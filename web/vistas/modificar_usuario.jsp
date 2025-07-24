@@ -205,7 +205,7 @@ button:hover {
             List<personalmodelo> list2 = modelo2.listarporid(id2);
             Iterator<personalmodelo> iter2 = list2.iterator();
             personalmodelo m3 = null;
-            iter.hasNext();
+            iter2.hasNext();
             while (iter2.hasNext()) {
                 m3 = iter2.next();
             }
@@ -318,3 +318,4 @@ button:hover {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
+    
