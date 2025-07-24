@@ -7,9 +7,9 @@ Este es un sistema de facturación desarrollado con Java EE, JSP, Servlets, MySQ
 ## 🚀 Características principales
 
 - Gestión de clientes y productos
-- Carga de ventas con búsqueda por cédula y selección rápida
+- Carga de ventas
 - Facturación automática con impresión lista
-- Control de caja: apertura, cierre, historial
+- Control de caja: apertura, cierre
 - Interfaz limpia y responsiva con Bootstrap
 - Modal para selección rápida de clientes/proveedores
 - Base de datos relacional y normalizada
