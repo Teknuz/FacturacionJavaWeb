@@ -19,7 +19,7 @@ Este es un sistema de facturación desarrollado con Java EE, JSP, Servlets, MySQ
 ## 🖼 Capturas de pantalla
 
 ### Inicio de sesión
-![Login](assets/img/login.png)
+![Login](webpages/assets/img/login.png)
 
 ### Panel principal / Dashboard
 ![Dashboard](assets/img/dashboard.png)
