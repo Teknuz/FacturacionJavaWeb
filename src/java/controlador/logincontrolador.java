@@ -90,9 +90,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 
         boolean aux = m.acceder();
 
-        if (aux == false) {
-            request.setAttribute("error", m);
-            acceso = "index.jsp";
+        if (!aux) {
+        request.setAttribute("mensajeError", "Usuario o contraseña incorrectos");
+        acceso = "index.jsp";
         } else {
             String tipo = m.validar(); // Asignar el valor de tipo
             sesion.setAttribute("sesion", "activo");

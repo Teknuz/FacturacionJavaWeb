@@ -47,6 +47,17 @@
     <div class="container">
         <div class="card col-sm-10 mx-auto"> <!-- Utiliza 'mx-auto' para centrar el elemento horizontalmente -->
             <div class="card-body">
+                <% 
+    String mensajeError = (String) request.getAttribute("mensajeError");
+    if (mensajeError != null) {
+%>
+    <div class="alert alert-danger text-center mt-3">
+        <strong><%= mensajeError %></strong>
+    </div>
+<% 
+    } 
+%>
+
                 <form class="form-sign" action="logincontrolador" method="post">       
                     <div class="form-group text-center">
                         <h3>Login</h3>
