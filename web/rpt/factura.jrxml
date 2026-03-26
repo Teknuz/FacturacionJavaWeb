@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5fc0722-71ec-4720-b6be-879e6085b75f">
 	<property name="ireport.zoom" value="1.6105100000000014"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="554"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="factura" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -442,7 +442,7 @@ where ventas.`idventas`=$P{factura}]]>
 					<subreportParameterExpression><![CDATA[$P{factura}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\Users\\JoseG\\Downloads\\FacturacionJavaWeb-modelo_original (1)\\FacturacionJavaWeb-modelo_original\\web\\rpt\\detalle2.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[".\\detalle2.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
