@@ -26,8 +26,6 @@ desktop.ini
 *.swp
 *~
 
-# Reportes compilados
-*.jasper
 
 # Archivos ocultos del sistema y backups
 *.orig
